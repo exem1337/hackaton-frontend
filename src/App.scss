@@ -22,7 +22,7 @@ body {
 }
 
 .bg-secondary {
-  background-color: $secondary;
+  background-color: $disabled;
 }
 
 .color-accent {
@@ -47,6 +47,11 @@ body {
 
   &:hover {
     background-color: $accent;
+  }
+
+  &:disabled {
+    background-color: $disabled;
+    pointer-events: none;
   }
 }
 
