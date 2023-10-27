@@ -13,7 +13,6 @@ const App = () => {
     { path: '/', element: <LandingView /> },
     { path: '/auth', element: <AuthView /> }
   ])
-
   return routes;
 }
 
