@@ -1,2 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import url(./styles//landing.scss);
+
+.container {
+  max-width: 70vw;
+}
