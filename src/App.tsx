@@ -1,12 +1,14 @@
 import React from 'react';
 import Header from './components/Header';
+import Footer from './components/Footer/Footer';
+import AuthView from './views/authorization/AuthView';
+import LandingView from './views/LandingView';
 import {
   BrowserRouter as Router,
   useRoutes,
 } from "react-router-dom";
 import './App.scss';
-import AuthView from './views/authorization/AuthView';
-import LandingView from './views/LandingView';
+
 import Profile from './views/Profile';
 
 const App = () => {
@@ -21,8 +23,9 @@ const App = () => {
 const AppWrapper = () => {
   return (
     <Router>
-      <Header/>
+      <Header />
       <App />
+      <Footer />
     </Router>
   )
 }
