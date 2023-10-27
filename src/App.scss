@@ -1,1 +1,26 @@
 @import '~bootstrap/scss/bootstrap';
+@import url(./styles/landing.scss);
+@import url(./styles/authorization.scss);
+@import url(./styles/profile.scss);
+
+.container {
+  max-width: 70vw;
+}
+
+.base-wrapper {
+  h1 {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #ececec;
+  }
+
+  > div {
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
