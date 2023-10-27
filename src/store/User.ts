@@ -20,17 +20,17 @@ export default new class User {
    setMessages(message: string) {
       this.messages = message;
    }
-   async login(email: string, password: string) {
+   async login(form) {
+      const {email, password} = form
       try {
          const response = await AuthService.login(email, password);
-         console.log(response);
          localStorage.setItem('token', response.data.accessToken);
          this.setAuth(true);
          this.setUser(response.data.user);
+         console.log("response: ",response)
       } catch (e) {
-         console.log(e.response);
+         console.log("error: ", e.response);
          this.setMessages(e.response?.data?.message);
-         throw e.response;
       }
    }
 }

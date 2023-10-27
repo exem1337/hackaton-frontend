@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import {Validation} from "../../validation/validation";
+import user from "../../store/User";
 
 const AuthView = () => {
    const [form, setForm] = useState({
-      userName: '', email: '', password: '', confirmPassword: '', stay: false
+      email: '', password: '', stay: false
    });
    const [errors, setErrors] = useState({})// поле и string
    const [stateErrors, setStateErrors] = useState({}) // поле и bool
@@ -21,13 +22,13 @@ const AuthView = () => {
       }
    }
 
-   function handleSubmit(event) {
+   async function handleSubmit(event) {
       const {formErrors, stateErr} = Validation.validateFormLogIn(form);
       event.preventDefault();
       if(Object.keys(formErrors).length > 0){
          setErrors(formErrors)
       } else {
-         console.log(form)
+         await user.login(form)
       }
       setStateErrors(stateErr)
    }
