@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Header from './components/Header/Header';
 import {
   BrowserRouter as Router,
   useRoutes,
@@ -20,6 +20,7 @@ const App = () => {
 const AppWrapper = () => {
   return (
     <Router>
+      <Header/>
       <App />
     </Router>
   )
