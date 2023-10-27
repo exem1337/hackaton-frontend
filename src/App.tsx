@@ -7,10 +7,12 @@ import {
 } from "react-router-dom";
 import './App.scss';
 import AuthView from './views/AuthView';
+import LandingView from './views/LandingView';
 
 const App = () => {
   const routes = useRoutes([
-    { path: '/', element: <AuthView /> },
+    { path: '/', element: <LandingView /> },
+    { path: '/auth', element: <AuthView /> }
   ])
 
   return routes;
