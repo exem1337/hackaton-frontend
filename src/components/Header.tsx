@@ -2,6 +2,7 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import {Link} from "react-router-dom";
 
 const Header =()=>{
     return(
@@ -18,7 +19,7 @@ const Header =()=>{
           </Nav>
 
 					<Nav  className = "ms-auto">
-						<Nav.Link href="#admission">Войти</Nav.Link>
+						<Link to="/auth" className={"dropdown-item text-sm-center "}>Войти</Link>
 					</Nav>
         </Container>
       </Navbar>

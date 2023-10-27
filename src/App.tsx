@@ -10,6 +10,7 @@ import {
 import './App.scss';
 
 import Profile from './views/Profile';
+import LeftMenu from "./views/left_menu/LeftMenu";
 
 const App = () => {
   const routes = useRoutes([
@@ -23,7 +24,8 @@ const App = () => {
 const AppWrapper = () => {
   return (
     <Router>
-      <Header />
+      <Header/>
+      <LeftMenu/>
       <App />
       <Footer />
     </Router>
