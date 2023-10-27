@@ -14,3 +14,9 @@ p > a{
     text-decoration: none;
 }
 
+input{
+    color:black;
+}
+textarea{
+    color: '#fff'
+}
