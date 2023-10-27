@@ -5,7 +5,7 @@ import {
   useRoutes,
 } from "react-router-dom";
 import './App.scss';
-import AuthView from './views/AuthView';
+import AuthView from './views/authorization/AuthView';
 import LandingView from './views/LandingView';
 
 const App = () => {
