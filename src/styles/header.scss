@@ -1,0 +1,15 @@
+@import "./variables.scss";
+
+.navbar {
+  background-color: $bg-darken;
+  color: $text-black !important;
+  border-bottom: 1px solid $border-color;
+
+  a {
+    color: $text-black;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

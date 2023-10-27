@@ -1,0 +1,43 @@
+@import "./variables.scss";
+
+.left-menu-nav-bar {
+  max-width: 260px;
+  height: calc(100vh - 55.9px);
+  padding: 27.6px 0;
+  background-color: $bg-darken;
+  top: 57px;
+  border-right: $border-color;
+
+  * {
+    color: $text-black !important;
+  }
+
+  a {
+    transition: .3s ease;
+
+    &:hover {
+      color: $primary !important;
+
+      > span > svg > path {
+        transition: .3s ease;
+      }
+
+      > span {
+        transition: .3s ease;
+
+        > svg > path {
+          fill: $primary !important;
+        } 
+      }
+    }
+  }
+}
+
+.left-menu-container {
+  margin: 0 3rem;
+}
+
+.left-menu-ico {
+  width: 15px;
+  height: 15px;
+}

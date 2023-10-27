@@ -2,9 +2,50 @@
 @import url(./styles/landing.scss);
 @import url(./styles/authorization.scss);
 @import url(./styles/profile.scss);
-@import url(./styles/left_menu_nav_bar.scss);
+@import url(./styles/left-menu-nav-bar.scss);
+@import url(./styles/header.scss);
+@import url(./styles/footer.scss);
+@import "./styles/variables.scss";
+
+body {
+  background-color: $main-bg;
+  color: $text-black;
+}
+
+.color-primary {
+  color: $primary;
+}
+
+.bg-primary {
+  background-color: $primary;
+}
+
+.bg-secondary {
+  background-color: $secondary;
+}
+
+.color-accent {
+  color: $accent;
+}
+
+.color-black {
+  color: $text-black;
+}
+
 .container {
   max-width: 70vw;
+}
+
+.btn {
+  background-color: $primary;
+  color: $main-bg !important;
+  padding: 4px 16px;
+  border-radius: 8px;
+  transition: .3s ease;
+
+  &:hover {
+    background-color: $accent;
+  }
 }
 
 .base-wrapper {
@@ -13,7 +54,7 @@
     font-weight: 500;
     margin-bottom: 14px;
     padding-bottom: 14px;
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid $border-color;
   }
 
   > div {

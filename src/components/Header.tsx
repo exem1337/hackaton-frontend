@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 const Header =()=>{
     return(
 			<>
-      <Navbar bg="primary" data-bs-theme="dark">
+      <Navbar data-bs-theme="dark">
         <Container>
           <Navbar.Brand href="#home">ПрофТестиум </Navbar.Brand>
           <Nav className="me-auto">
@@ -18,8 +18,8 @@ const Header =()=>{
 						
           </Nav>
 
-					<Nav  className = "ms-auto">
-						<Link to="/auth" className={"dropdown-item text-sm-center "}>Войти</Link>
+					<Nav className = "ms-auto">
+						<Link to="/auth" className={"dropdown-item text-sm-center btn"}>Войти</Link>
 					</Nav>
         </Container>
       </Navbar>

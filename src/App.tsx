@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
-import Footer from './components/Footer/Footer';
+import Footer from './components/Footer';
 import AuthView from './views/authorization/AuthView';
 import LandingView from './views/LandingView';
 import {
@@ -27,7 +27,7 @@ const AppWrapper = () => {
       <Header/>
       <LeftMenu/>
       <App />
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   )
 }
