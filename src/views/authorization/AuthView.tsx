@@ -8,7 +8,7 @@ const AuthView = () => {
    });
    const [errors, setErrors] = useState({})// поле и string
    const [stateErrors, setStateErrors] = useState({}) // поле и bool
-   const setField = (field: string, value)=>{
+   const setField = (field: string, value: string | boolean)=>{
       setForm({
          ...form,
          [field]: value
@@ -93,9 +93,6 @@ const AuthView = () => {
                </Form.Group>
             </Form>
          </div>
-         {/*validated={!errors}
-               onSubmit={handleSubmit}*/}
-
       </Container>
    );
 }
