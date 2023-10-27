@@ -30,7 +30,7 @@ const LeftMenu = () => {
             </span>{" "}
             Мое обучение
           </Link>
-          <Link to={""} className={"nav-link d-flex align-items-center"}>
+          <Link to={"/test"} className={"nav-link d-flex align-items-center"}>
             <span className={"d-flex align-items-center"}>
               <BsJournalCheck className={"me-2"} />
             </span>
