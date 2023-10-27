@@ -11,7 +11,7 @@ const Header =()=>{
         <Container>
           <Navbar.Brand href="#home">ПрофТестиум </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Возможности</Nav.Link>
+            <Nav.Link href="#opportunity">Возможности</Nav.Link>
             <Nav.Link href="#features">Тарифы</Nav.Link>
             <Nav.Link href="#pricing">Внедрение</Nav.Link>
 						<Nav.Link href="#feedback">Отзывы</Nav.Link>
