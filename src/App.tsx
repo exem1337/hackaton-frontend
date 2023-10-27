@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import {
   BrowserRouter as Router,
   useRoutes,
@@ -21,6 +22,8 @@ const AppWrapper = () => {
   return (
     <Router>
       <Header/>
+      <Footer/>
+      
       <App />
     </Router>
   )

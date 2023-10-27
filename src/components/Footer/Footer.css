@@ -1,0 +1,16 @@
+*{
+    color:white;
+}
+
+footer{
+    background-color: #0d6efd;
+    padding: 3rem 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+p > a{
+    text-decoration: none;
+}
+
