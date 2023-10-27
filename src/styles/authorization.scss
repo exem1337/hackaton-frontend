@@ -1,19 +1,24 @@
+@import "./variables.scss";
+
 .auth_container{
   min-height: 100vh;
+
+  &_div {
+    min-width: 550px;
+    background: $bg-darken;
+    border-radius: 8px;
+    padding: 16px;
+  }
 }
-.auth_container_div{
-  min-width: 550px;
-  background: rgba(66, 130, 255, 0.29);
-  border-radius: 2rem;
-  padding: 3rem;
-}
+
 .auth_point{
   > strong {
     cursor: pointer;
   }
-}
-.auth_point_check{
-  > input {
-    cursor: pointer;
+
+  &_check {
+    > input {
+      cursor: pointer;
+    }
   }
 }

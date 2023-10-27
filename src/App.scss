@@ -7,6 +7,7 @@
 @import url(./styles/footer.scss);
 @import url(./styles/tests-page.scss);
 @import url(./styles/test-page.scss);
+@import url(./styles/inputs.scss);
 @import "./styles/variables.scss";
 
 body {
@@ -23,7 +24,7 @@ body {
 }
 
 .bg-secondary {
-  background-color: $secondary;
+  background-color: $disabled;
 }
 
 .color-accent {
@@ -44,9 +45,15 @@ body {
   padding: 4px 16px;
   border-radius: 8px;
   transition: .3s ease;
+  border: none !important;
 
   &:hover {
     background-color: $accent;
+  }
+
+  &:disabled {
+    background-color: $disabled;
+    pointer-events: none;
   }
 }
 
