@@ -8,6 +8,7 @@ import './App.scss';
 import AuthView from './views/authorization/AuthView';
 import LandingView from './views/LandingView';
 import Profile from './views/Profile';
+import LeftMenu from "./views/left_menu/LeftMenu";
 
 const App = () => {
   const routes = useRoutes([
@@ -22,6 +23,7 @@ const AppWrapper = () => {
   return (
     <Router>
       <Header/>
+      <LeftMenu/>
       <App />
     </Router>
   )
