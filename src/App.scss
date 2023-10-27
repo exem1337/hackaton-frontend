@@ -5,6 +5,7 @@
 @import url(./styles/left-menu-nav-bar.scss);
 @import url(./styles/header.scss);
 @import url(./styles/footer.scss);
+@import url(./styles/inputs.scss);
 @import "./styles/variables.scss";
 
 body {
@@ -42,6 +43,7 @@ body {
   padding: 4px 16px;
   border-radius: 8px;
   transition: .3s ease;
+  border: none !important;
 
   &:hover {
     background-color: $accent;

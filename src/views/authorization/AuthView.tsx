@@ -37,9 +37,9 @@ const AuthView = () => {
       <Container className={`p-5 d-flex align-items-center justify-content-center auth_container`}>
          <div className={'auth_container_div'}>
             <Form className={`m-auto`} noValidate validated={!errors} onSubmit={handleSubmit}>
-               <div className={"text-center"}><h5>Login</h5></div>
+               <div className={"text-center"}><h5>Войти в аккаунт</h5></div>
                <Form.Group as={Col} className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email</Form.Label>
+                  <Form.Label>Электронная почта</Form.Label>
                   <Form.Control
                      value={form.email}
                      onChange={(e) => {
@@ -57,7 +57,7 @@ const AuthView = () => {
                </Form.Group>
 
                <Form.Group as={Col} className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label>Пароль</Form.Label>
                   <Form.Control
                      required
                      isInvalid={!!errors['password']}
