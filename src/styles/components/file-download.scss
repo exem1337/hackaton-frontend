@@ -1,0 +1,12 @@
+@import "../variables.scss";
+
+.base-file {
+  background-color: $primary;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  max-width: fit-content;
+  padding: 4px 8px;
+  color: $main-bg;
+  border-radius: 8px;
+}

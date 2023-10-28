@@ -1,12 +1,11 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
-import { TEST_STATUS_MAP } from "../../constants/testStatusMap.const";
 import { ITestPageItem } from "../../model/test.model";
 import { useNavigate } from "react-router-dom";
 
 interface ITestPageItemProps {
   key: number;
-  test: ITestPageItem;
+  test: Partial<ITestPageItem>;
 }
 
 const TestPageItem = ({ key, test }: ITestPageItemProps) => {
@@ -26,7 +25,7 @@ const TestPageItem = ({ key, test }: ITestPageItemProps) => {
             <span>Автор: {test.author}</span>
             <span>Кол-во задач: {test.count}</span>
             <span>Название курса: {test.title}</span>
-            <span>Статус: {TEST_STATUS_MAP.get(test.status)}</span>
+            <span>Статус: {test.completed ? 'Завершен' : 'Активный'}</span>
           </div>
         </Card.Text>
         <Button variant="primary" disabled={test.completed} onClick={() => onGoToTest(test.id)}>Пройти тестирование</Button>
