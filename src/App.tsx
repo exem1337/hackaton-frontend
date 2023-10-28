@@ -22,7 +22,7 @@ const App = () => {
     { path: '/education', element: <Profile /> },
     { path: '/tests', element: <TestsView /> },
     { path: '/tests/:id', element: <TestCompleteView /> },
-     { path: '/education', element: <Profile /> },
+     { path: '/education', element: <Profile/> },
      { path: '/test', element: <TestsView/> },
      { path: '/conversions', element: <Conversions /> },
 
