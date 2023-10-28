@@ -36,8 +36,21 @@ body {
   color: $text-black;
 }
 
-.container {
+.app-container {
   max-width: 70vw;
+  margin: 0 auto;
+  padding-left: 260px;
+  width: 100%;
+
+  @media screen and (max-width: 1279px) {
+    max-width: 90vw;
+  }
+}
+
+.app-wrapper {
+  display: flex;
+  gap: 24px;
+  height: 100%;
 }
 
 .btn {

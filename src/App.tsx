@@ -1,17 +1,17 @@
 import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import AuthView from './views/authorization/AuthView';
+import AuthView from './views/AuthView';
 import LandingView from './views/LandingView';
 import {
   BrowserRouter as Router,
   useRoutes,
 } from "react-router-dom";
 import './App.scss';
-
 import Profile from './views/Profile';
-import LeftMenu from "./views/left-menu/LeftMenu";
-import Tests from "./views/page-left-menu/task-page/Tests";
+import LeftMenu from "./components/LeftMenu";
+import TestsView from './views/TestsView';
+import TestCompleteView from './views/TestCompleteView';
 import Conversions from "./views/page-left-menu/conversions-page/conversions";
 
 const App = () => {
@@ -19,14 +19,13 @@ const App = () => {
     { path: '/', element: <LandingView /> },
     { path: '/auth', element: <AuthView /> },
     { path: '/profile', element: <Profile /> },
+    { path: '/education', element: <Profile /> },
+    { path: '/tests', element: <TestsView /> },
+    { path: '/tests/:id', element: <TestCompleteView /> }
      { path: '/education', element: <Profile /> },
      { path: '/test', element: <Tests/> },
-     // { path: '/profile', element: <Profile /> },
      { path: '/conversions', element: <Conversions /> },
-     // { path: '/profile', element: <Profile /> },
-     // { path: '/profile', element: <Profile /> },
-     // { path: '/profile', element: <Profile /> },
-     // { path: '/profile', element: <Profile /> }
+
 
   ])
   return routes;
@@ -36,8 +35,10 @@ const AppWrapper = () => {
   return (
     <Router>
       <Header/>
-      <LeftMenu/>
-      <App />
+      <div className="app-wrapper">
+        <LeftMenu/>
+        <App />
+      </div>
       {/* <Footer /> */}
     </Router>
   )

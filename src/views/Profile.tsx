@@ -3,7 +3,7 @@ import BaseWrapper, { BaseWrapperSlot } from '../components/BaseWrapper';
 
 const Profile = () => {
   return (
-    <div className="container">
+    <div className="app-container">
       <div className="profile">
         <div className="profile--avatar"></div>
 

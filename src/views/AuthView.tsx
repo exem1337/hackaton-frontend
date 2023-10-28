@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { Validation } from "../../validation/validation";
-import user from "../../store/User";
+import { Validation } from "../validation/validation";
+import user from "../store/User";
 
 const AuthView = () => {
   const [form, setForm] = useState({
