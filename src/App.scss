@@ -12,6 +12,7 @@
 @import url(./styles/department-view.scss);
 @import url(./styles/components/user-wrapper.scss);
 @import url(./styles/components/file-download.scss);
+@import url(./styles/portal.scss);
 @import "./styles/variables.scss";
 
 body {
@@ -41,7 +42,7 @@ body {
 
 .bg-accent {
   background-color: $accent !important;
-  color: $main-bg !important; 
+  color: $main-bg !important;
 }
 
 .app-container {
@@ -133,5 +134,19 @@ body {
 
   &.accent {
     color: $accent;
+  }
+}
+
+.row-list {
+  display: flex;
+  > p {
+    color: $additional-text-color;
+    margin-right: 20px;
+    font-weight: 600;
+
+    > span {
+      color: $text-black;
+      font-weight: 400;
+    }
   }
 }

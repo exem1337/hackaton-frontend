@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import BaseWrapper, { BaseWrapperSlot } from "../../../components/BaseWrapper";
 import { Button, Modal } from "react-bootstrap";
 import ModalWindow from "../../../myModal/ModalWindow";
+import MyModalConversion from "./MyModalConversion";
 
 interface iConversionState {
   id: number;
