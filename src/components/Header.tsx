@@ -7,6 +7,7 @@ import userStore from '../store/User';
 import { Button } from 'react-bootstrap';
 import AuthService from '../service/AuthService';
 import { observer } from 'mobx-react-lite';
+import {BiSolidExit} from "react-icons/bi";
 
 const Header = observer(() => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Header = observer(() => {
 
   return(
 		<>
-      <Navbar data-bs-theme="dark">
+      <Navbar data-bs-theme="dark" className={'position-sticky top-0 z-2'}>
         <Container>
           <Navbar.Brand href="#home">ПрофТестиум</Navbar.Brand>
           <Nav className="me-auto">
@@ -33,7 +34,7 @@ const Header = observer(() => {
               userStore.isLogin 
                 ? <div className="auth-info">
                   <span>{ userStore.user?.last_name } { userStore.user?.first_name } { userStore.user?.middle_name }</span>
-                  <Button onClick={() => onLogout()}>Выйти</Button>
+                  <Button className={'d-flex align-items-center'} onClick={() => onLogout()}>Выйти <BiSolidExit/></Button>
                 </div>
                 : <Link to="/auth" className={"dropdown-item text-sm-center btn"}>Войти</Link>
             }

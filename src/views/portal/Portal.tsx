@@ -18,7 +18,7 @@ const Portal = ({key, id, title, nameHR, name}) => {
    }
 
    return (
-      <div key={key} className={'w-100 mb-4 border-1 portal--container'}>
+      <div key={key} className={'w-100 border-1 portal--container'}>
          <BaseWrapper title={title} smallTitle={true}>
             <BaseWrapperSlot>
                <div className="department-view--themes__theme--actions">

@@ -9,6 +9,7 @@ export default class AuthService {
       try {
          const userCredentials = (await $api.post<AuthResponse>('/auth/login', { username: email, password })).data as AuthResponse;
          userStore.setUser(await this.getUserInfoById(userCredentials.id));
+         console.log(userCredentials)
          this.setTokenCookie(userCredentials)
       }
       catch (error) {

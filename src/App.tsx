@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import AuthView from './views/AuthView';
@@ -17,24 +17,26 @@ import PortalView from './views/PortalView';
 import DepartmentView from './views/DepartmentView';
 import AdminPage from "./views/admin-page/AdminPage";
 import AuthService from './service/AuthService';
+import DbEmployeePage from "./views/db-employee-page/DbEmployeePage";
 
 const App = () => {
-  useEffect(() => {
-    AuthService.refresh();
-  }, [])
+   useEffect(() => {
+      AuthService.refresh();
+   }, [])
 
-  const routes = useRoutes([
-    { path: '/', element: <LandingView /> },
-    { path: '/auth', element: <AuthView /> },
-    { path: '/profile', element: <Profile /> },
-    { path: '/tests', element: <TestsView /> },
-    { path: '/tests/:id', element: <TestCompleteView /> },
-    { path: '/portal/:id', element: <PortalView /> },
-    { path: '/department/:id', element: <DepartmentView /> },
-    { path: '/conversions', element: <Conversions /> },
-     {path: '/admin', element: <AdminPage/>},
-  ])
-  return routes;
+   const routes = useRoutes([
+      {path: '/', element: <LandingView/>},
+      {path: '/auth', element: <AuthView/>},
+      {path: '/profile', element: <Profile/>},
+      {path: '/tests', element: <TestsView/>},
+      {path: '/tests/:id', element: <TestCompleteView/>},
+      {path: '/portal/:id', element: <PortalView/>},
+      {path: '/department/:id', element: <DepartmentView/>},
+      {path: '/conversions', element: <Conversions/>},
+      {path: '/admin', element: <AdminPage/>},
+      {path: '/employee', element: <DbEmployeePage/>},
+   ])
+   return routes;
 }
 
 const AppWrapper = () => {
