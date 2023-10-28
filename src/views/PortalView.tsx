@@ -1,9 +1,60 @@
-const PortalView = () => {
+import api from '../http'
+import userStore from '../store/User'
+import { observer } from "mobx-react-lite";
+import { useEffect, useState } from "react";
+import BaseWrapper, { BaseWrapperSlot } from "../components/BaseWrapper";
+import { IPortal } from "../model/portal.model";
+import { useNavigate } from 'react-router-dom';
+
+const PortalView = observer(() => {
+  const [portal, setPortal] = useState<IPortal>({} as IPortal);
+  const navigate = useNavigate();
+
+  const getPortal = async () => {
+    if (!userStore.user?.portal_id) {
+      return;
+    }
+    
+    const portalResponse = (await api.get(`/portal/one/${userStore.user?.portal_id}`))?.data;
+    setPortal(portalResponse);
+  }
+
+  const onGoToDepartment = (id: number): void => {
+    navigate(`/department/${id}`);
+  }
+
+  useEffect(() => {
+    getPortal()
+  }, [userStore.user?.portal_id])
+
+  if (!portal) {
+    return;
+  }
+
   return (
     <div className="app-container portal">
-      Портал
+      <BaseWrapper title={`Портал - ${portal?.name}`}>
+        <BaseWrapperSlot>
+          Описание портала: { portal?.description || '' }
+          <div className="portal--departments">
+            <h5>Подразделения</h5>
+            {
+              portal.departments?.map((department, key) => 
+                <div 
+                  key={key} 
+                  className='portal--departments__department'
+                  onClick={() => onGoToDepartment(department.id)}
+                >
+                  { department.name }
+                </div>
+              )
+            }
+          </div>
+        </BaseWrapperSlot>
+      </BaseWrapper>
+      
     </div>
   )
-}
+})
 
 export default PortalView;

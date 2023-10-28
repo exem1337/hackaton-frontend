@@ -8,6 +8,9 @@ const AuthView = () => {
   const [form, setForm] = useState({
     email: "",
     password: "",
+    name: "",
+    last_name: "",
+    phone: "",
     stay: false,
   });
   const [errors, setErrors] = useState({}); 

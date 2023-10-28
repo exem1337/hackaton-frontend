@@ -27,6 +27,9 @@ export default new class User {
       return this.user?.roles?.includes(EUserRole.Employee);
    }
 
+   isOperatingRole(): boolean {
+      return this.user?.roles?.some((role) => [EUserRole.Admin, EUserRole.HrManager, EUserRole.PortalAdmin].includes(role));
+   }
   
    logout() {
       this.user = {} as IUser;
