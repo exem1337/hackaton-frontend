@@ -3,6 +3,7 @@ import { ITestEdit } from "../model/test.model"
 import { Button, Form } from "react-bootstrap"
 import ActionButton, { ActionButtonSlot } from "../components/ActionButton"
 import { AiFillDelete } from "react-icons/ai";
+import api from '../http'
 
 const TestEditView = () => {
   const [test, setTest] = useState<ITestEdit>({
@@ -15,7 +16,7 @@ const TestEditView = () => {
       ...test,
       questions: [...test.questions, {
         id: Math.random(),
-        title: '',
+        text: '',
         answers: []
       }]
     })
@@ -26,7 +27,7 @@ const TestEditView = () => {
       ...test,
       questions: test.questions?.map((question) => ({
         ...question,
-        title: questionId === question.id ? text : question.title,
+        text: questionId === question.id ? text : question.text,
       }))
     })
   }
@@ -39,7 +40,8 @@ const TestEditView = () => {
         answers: question.id === questionId 
           ? [...question.answers, { 
               id: Math.random(),
-              title: '',
+              text: '',
+              score: 1,
               isCorrect: false,
             }]
           : question.answers,
@@ -61,7 +63,7 @@ const TestEditView = () => {
         ...question,
         answers: question.answers?.map((answer) => ({
           ...answer,
-          title: answer.id === answerId ? text : answer.title,
+          text: answer.id === answerId ? text : answer.text,
         }))
       }))
     })
@@ -99,6 +101,12 @@ const TestEditView = () => {
     })
   }
 
+  const onSave = async () => {
+    await api.post('/tests/submitTest', {
+      ...test
+    })
+  }
+
   return (
     <div className="app-container test-edit">
       test edit { test.name }
@@ -119,7 +127,7 @@ const TestEditView = () => {
             </ActionButton>
             <Form.Control
               type="text"
-              value={question.title}
+              value={question.text}
               placeholder="Текст вопроса"
               onChange={(e) => setQuestionName(question.id, e.target.value)}
             />
@@ -128,7 +136,7 @@ const TestEditView = () => {
                 <div className="test-edit--question__answer">
                   <Form.Control
                     type="text"
-                    value={answer.title}
+                    value={answer.text}
                     placeholder="Текст варианта ответа"
                     onChange={(e) => setAnswerTitle(answer.id, e.target.value)}
                   />
@@ -150,7 +158,7 @@ const TestEditView = () => {
           </div>
         )
       }
-
+      <Button onClick={onSave}>Сохранить</Button>
       <pre>
         { JSON.stringify(test) }
       </pre>

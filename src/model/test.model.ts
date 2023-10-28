@@ -9,7 +9,7 @@ export interface ITestPageItem {
 
 export interface ITest {
   id: number;
-  title: string;
+  text: string;
 }
 
 export interface ITestEdit {
@@ -18,14 +18,15 @@ export interface ITestEdit {
 }
 
 export interface ITestEditQuestion {
-  title: string;
+  text: string;
   id: number;
-  img?: string;
+  blob_id?: string;
   answers: Array<ItestEditQuestionAnswer>;
 }
 
 export interface ItestEditQuestionAnswer {
   id: number;
-  title: string;
+  text: string;
+  score: number;
   isCorrect: boolean;
 }
