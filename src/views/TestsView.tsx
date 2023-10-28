@@ -11,6 +11,7 @@ const TestsView = () => {
       title: "Курсы по flutter",
       status: ETestStatuses.Done,
       img: "https://sportishka.com/uploads/posts/2022-04/1650580748_11-sportishka-com-p-machu-pikchu-peru-krasivo-foto-12.jpg",
+      completed: true,
     },
     {
       id: 1,
@@ -19,6 +20,7 @@ const TestsView = () => {
       title: "Курсы по flutter",
       status: ETestStatuses.Active,
       img: "https://sportishka.com/uploads/posts/2022-04/1650580748_11-sportishka-com-p-machu-pikchu-peru-krasivo-foto-12.jpg",
+      completed: false,
     },
     {
       id: 1,
@@ -27,6 +29,7 @@ const TestsView = () => {
       title: "Курсы по flutter",
       status: ETestStatuses.Done,
       img: "https://sportishka.com/uploads/posts/2022-04/1650580748_11-sportishka-com-p-machu-pikchu-peru-krasivo-foto-12.jpg",
+      completed: false,
     },
   ];
 

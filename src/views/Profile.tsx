@@ -1,6 +1,5 @@
 import React from 'react'
 import BaseWrapper, { BaseWrapperSlot } from '../components/BaseWrapper';
-import userStore from '../store/User';
 
 const Profile = () => {
   return (

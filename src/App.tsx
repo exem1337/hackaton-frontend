@@ -11,6 +11,7 @@ import './App.scss';
 import Profile from './views/Profile';
 import LeftMenu from "./components/LeftMenu";
 import TestsView from './views/TestsView';
+import TestCompleteView from './views/TestCompleteView';
 
 const App = () => {
   const routes = useRoutes([
@@ -18,7 +19,8 @@ const App = () => {
     { path: '/auth', element: <AuthView /> },
     { path: '/profile', element: <Profile /> },
     { path: '/education', element: <Profile /> },
-    { path: '/tests', element: <TestsView/> },
+    { path: '/tests', element: <TestsView /> },
+    { path: '/tests/:id', element: <TestCompleteView /> }
   ])
   return routes;
 }

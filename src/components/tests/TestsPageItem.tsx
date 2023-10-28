@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { TEST_STATUS_MAP } from "../../constants/testStatusMap.const";
 import { ITestPageItem } from "../../model/test.model";
+import { useNavigate } from "react-router-dom";
 
 interface ITestPageItemProps {
   key: number;
@@ -9,6 +10,12 @@ interface ITestPageItemProps {
 }
 
 const TestPageItem = ({ key, test }: ITestPageItemProps) => {
+  const navigate = useNavigate();
+
+  const onGoToTest = (id: number): void => {
+    navigate(`/tests/${id}`);
+  }
+
   return (
     <Card key={key} className={"test-page mb-4"}>
       <Card.Img variant="top" className={"test-page-img"} src={test.img} />
@@ -22,7 +29,7 @@ const TestPageItem = ({ key, test }: ITestPageItemProps) => {
             <span>Статус: {TEST_STATUS_MAP.get(test.status)}</span>
           </div>
         </Card.Text>
-        <Button variant="primary">Пройти тестирование</Button>
+        <Button variant="primary" disabled={test.completed} onClick={() => onGoToTest(test.id)}>Пройти тестирование</Button>
       </Card.Body>
     </Card>
   );

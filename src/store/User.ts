@@ -15,7 +15,6 @@ export default new class User {
    } as unknown as IUser
    isLoading = false;
    messages = '';
-   isAuth = false;
 
    constructor() {
       makeAutoObservable(this);
@@ -40,10 +39,6 @@ export default new class User {
    get isLogin(): boolean {
       return !!this.user?.id;
    }
-   
-   setAuth(bool: boolean): void {
-      this.isAuth = bool;
-   }
 
    setUser(user: IUser): void {
       this.user = user;
@@ -58,11 +53,9 @@ export default new class User {
       try {
          const response = await AuthService.login(email, password);
          localStorage.setItem('token', response.data.accessToken);
-         this.setAuth(true);
          this.setUser(response.data.user);
-         console.log("response: ",response)
       } catch (e) {
-         console.log("error: ", e.response);
+         console.error("error: ", e.response);
          this.setMessages(e.response?.data?.message);
       }
    }
