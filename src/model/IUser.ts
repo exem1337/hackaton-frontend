@@ -8,6 +8,8 @@ export interface IUser{
    middle_name: string;
    phone: string;
    roles: Array<EUserRole>;
+   avatar_salt?: string;
+   avatar?: string;
 }
 
 export interface IUserInfoResponse{
@@ -18,6 +20,8 @@ export interface IUserInfoResponse{
    middle_name: string;
    phone: string;
    roles: Array<IUserInfoRolesResponse>;
+   avatar_salt?: string;
+   avatar?: string;
 }
 
 export interface IUserInfoRolesResponse {

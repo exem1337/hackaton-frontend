@@ -16,6 +16,10 @@ const Header = observer(() => {
     navigate('/');
   }
 
+  const onGoToProfile = () => {
+    navigate('/profile')
+  }
+
   return(
 		<>
       <Navbar data-bs-theme="dark">
@@ -32,9 +36,10 @@ const Header = observer(() => {
             {
               userStore.isLogin 
                 ? <div className="auth-info">
-                  <span>{ userStore.user?.last_name } { userStore.user?.first_name } { userStore.user?.middle_name }</span>
-                  <Button onClick={() => onLogout()}>Выйти</Button>
-                </div>
+                    <span onClick={onGoToProfile}>{ userStore.user?.last_name } { userStore.user?.first_name } { userStore.user?.middle_name }</span>
+                    { userStore.user?.avatar && <img src={`data:image/png;base64,${userStore.user?.avatar as unknown as string}`} /> }
+                    <Button onClick={() => onLogout()}>Выйти</Button>
+                  </div>
                 : <Link to="/auth" className={"dropdown-item text-sm-center btn"}>Войти</Link>
             }
 					</Nav>
