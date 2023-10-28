@@ -32,7 +32,7 @@ const LeftMenu = () => {
             </span>
             Наша компания
           </Link>
-          <Link to={""} className={"nav-link d-flex align-items-center"}>
+          <Link to={"/department/:id"} className={"nav-link d-flex align-items-center"}>
             <span className={"d-flex align-items-center"}>
               <GiBlackBook className={"me-2"} />
             </span>{" "}
