@@ -1,0 +1,38 @@
+@import "../variables.scss";
+
+.user-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  max-width: 500px;
+  border-radius: 8px;
+  border: 1px solid $border-color;
+
+  &--inner {
+    display: flex;
+    gap: 24px;
+    padding: 8px 16px;
+
+    &__avatar {
+      background-color: $bg-darken;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+    }
+  
+    &__info {
+      p {
+        margin-bottom: 8px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+        
+        &.user-wrapper--inner__info--position {
+          color: $primary;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

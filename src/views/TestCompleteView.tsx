@@ -10,7 +10,7 @@ const TestCompleteView = () => {
   }, [])
 
   return (
-    <div className="app-container">
+    <div className="app-container test-complete">
       <BaseWrapper title={testService.title}>
         <BaseWrapperSlot>
           Контент

@@ -5,10 +5,13 @@
 @import url(./styles/left-menu-nav-bar.scss);
 @import url(./styles/header.scss);
 @import url(./styles/footer.scss);
-@import url(./styles/tests-page.scss);
-@import url(./styles/test-page.scss);
+@import url(./styles/tests/tests-page.scss);
+@import url(./styles/tests/test-page.scss);
 @import url(./styles/inputs.scss);
 @import url(./styles/conversion-page.scss);
+@import url(./styles/tests/test-complete.scss);
+@import url(./styles/department-view.scss);
+@import url(./styles/components/user-wrapper.scss);
 @import "./styles/variables.scss";
 
 body {
@@ -87,6 +90,7 @@ body {
       margin-bottom: 0;
     }
   }
+
   &-small-title {
     font-size: 20px !important;
   }
