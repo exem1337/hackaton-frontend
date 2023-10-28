@@ -37,3 +37,14 @@ export interface IUserTokenResponse {
    refresh: string;
 }
 
+export interface IUsers{
+   id: number,
+   first_name: string,
+   last_name: string,
+   middle_name: string,
+   avatar: string,
+   email: string,
+   position: string,
+   phone: string
+}
+

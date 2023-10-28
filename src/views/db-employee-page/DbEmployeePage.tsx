@@ -9,54 +9,26 @@ import RegistrPortal from "../admin-page/RegistrPortal";
 import ModalWindow from "../../myModal/ModalWindow";
 import ModalDbEmployees from "./ModalDbEmployees";
 import EmployerService from "../../service/EmployerService";
+import userStore from "../../store/User";
+import {IUsers} from "../../model/IUser";
 
 const DbEmployeePage = () => {
    const [activeUser, setActiveUSer] = useState({
       id: null,
       editStatus: null,
    })
-   const db = [
-      {
-         id: 1,
-         last_name: 'Виктор',
-         first_name: 'Нефедоров',
-         surname: "Нефедор",
-         phone: '12345678910',
-         img: '',
-         email: 'pupupu.@mail.ru',
-         job_title: 'Сварщик 5 разряда',
-         bid: '70%',
-         status: "Активен",
 
-      }, {
-         id: 1,
-         last_name: 'Виктор',
-         first_name: 'Нефедоров',
-         surname: "Нефедор",
-         phone: '12345678910',
-         img: '',
-         email: 'pupupu.@mail.ru',
-         job_title: 'Сварщик 5 разряда',
-         bid: '70%',
-         status: "Активен",
-
-      }, {
-         id: 1,
-         last_name: 'Виктор',
-         first_name: 'Нефедоров',
-         surname: "Нефедор",
-         phone: '12345678910',
-         img: '',
-         email: 'pupupu.@mail.ru',
-         job_title: 'Сварщик 5 разряда',
-         bid: '70%',
-         status: "Активен",
-
-      },
-   ]
+   const [user, setUser] = useState<IUsers[]>([])
+   async function getUsers() {
+      const result = await EmployerService.getAllUSer();
+      setUser(result)
+   }
    useEffect(()=>{
-      EmployerService.getAllUSer();
+      getUsers();
    }, [])
+   useEffect(()=>{
+      console.log(user);
+   }, [user])
    function activeUserRestart() {
       setActiveUSer({
          id: null,
@@ -82,7 +54,7 @@ const DbEmployeePage = () => {
       <div className={'db-employee-page app-container'}>
          <BaseWrapper title={`Список сотрудников`}>
             <BaseWrapperSlot>
-               {db.map((db_, index) =>
+               {user.map((db_, index) =>
                   <div key={index} className={'db-employee-page--list'}>
                      <BaseWrapper title={`${db_.last_name} ${db_.first_name}`} smallTitle>
                         <BaseWrapperSlot>
@@ -99,24 +71,25 @@ const DbEmployeePage = () => {
                               </ActionButton>
                            </div>
                            <div className={'department-view--themes__theme--inner w-100'}>
-                              <Col>
+                              <Col xs={8}>
                                  <h6>Подробная информация:</h6>
-                                 <div className={'w-50 db-employee-page--bloc-info'}>
-                                    <p><span>Имя:</span><span></span></p>
-                                    <p><span>Фамилия:</span><span></span></p>
-                                    <p><span>Отчество:</span><span></span></p>
-                                    <p><span>Email:</span><span></span></p>
-                                    <p><span>Должность:</span><span></span></p>
-                                    <p><span>Номер телефона:</span><span></span></p>
-                                    <p><span>Ставка:</span><span></span></p>
-                                    <p><span>Статус сотрудника:</span><span></span></p>
+                                 <div className={'db-employee-page--bloc-info'}>
+                                    <p><span className={'me-2'}>Имя :</span><span>{db_.first_name}</span></p>
+                                    <p><span className={'me-2'}>Фамилия :</span><span>{db_.last_name}</span></p>
+                                    <p><span className={'me-2'}>Отчество :</span><span>{db_.middle_name}</span></p>
+                                    <p><span className={'me-2'}>Email :</span><span>{db_.email}</span></p>
+                                    <p><span className={'me-2'}>Должность :</span><span>{db_.position}</span></p>
+                                    <p><span className={'me-2'}>Номер телефона :</span><span>{db_.phone}</span></p>
+                                    <p><span className={'me-2'}>Ставка :</span><span>{db_.last_name}</span></p>
+                                    <p><span className={'me-2'}>Статус сотрудника :</span><span>{db_.last_name}</span></p>
                                  </div>
                               </Col>
                               <Col>
-                                 <Col xs={6} md={4} className={'m-auto'}>
+                                 <Col xs={6} md={4} className={''}>
                                     <Image className={'db-employee-page--photo'}
-                                           src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
-                                           roundedCircle/>
+                                           src={`data:image/png;base64,${userStore.user.avatar as unknown as string}`}
+                                           roundedCircle
+                                    />
                                  </Col>
                               </Col>
 

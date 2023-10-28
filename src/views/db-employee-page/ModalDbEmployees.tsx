@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button, FloatingLabel, Form, Modal} from "react-bootstrap";
+import {IUsers} from "../../model/IUser";
 
 interface UserActive {
    id: number,
@@ -11,19 +12,7 @@ interface UserActive {
 
 const ModalDbEmployees = (props: UserActive) => {
 
-   const [user, setUser] = useState({
-      id: 2,
-      first_name: 'Нефедоров',
-      last_name: 'Виктор',
-      surname: "Нефедор",
-      phone: '12345678910',
-      img: '',
-      email: 'pupupu.@mail.ru',
-      job_title: 'Сварщик 5 разряда',
-      bid: '70%',
-      status: "Активен",
-
-   })
+   const [user, setUser] = useState<IUsers>(null)
    useEffect(()=>{
 
    }, [])
@@ -48,7 +37,7 @@ const ModalDbEmployees = (props: UserActive) => {
                   <Form.Control value={user.last_name} type="text" placeholder="Введите фамилию" />
                </FloatingLabel>
                <FloatingLabel controlId="floatingPassword" label="Отчество">
-                  <Form.Control value={user.surname} type="text" placeholder="Введите отчество" />
+                  <Form.Control value={user.middle_name} type="text" placeholder="Введите отчество" />
                </FloatingLabel>
                <FloatingLabel controlId="floatingPassword" label="Номер телефона">
                   <Form.Control value={user.phone} type="text" placeholder="Введите номер телефона" />
@@ -57,13 +46,14 @@ const ModalDbEmployees = (props: UserActive) => {
                   <Form.Control value={user.email} type="text" placeholder="Введите email" />
                </FloatingLabel>
                <FloatingLabel controlId="floatingPassword" label="Должность">
-                  <Form.Control value={user.job_title} type="text" placeholder="Введите должность" />
+                  <Form.Control value={user.first_name} type="text" placeholder="Введите должность" />
                </FloatingLabel>
                <FloatingLabel controlId="floatingPassword" label="Ставка">
-                  <Form.Control value={user.bid} type="text" placeholder="Введите ставку" />
+                  <Form.Control value={user.first_name} type="text" placeholder="Введите ставку" />
                </FloatingLabel>
+
                <FloatingLabel controlId="floatingPassword" label="Статус сотрудника">
-                  <Form.Control value={user.status} type="text" placeholder="Введите ставку" />
+                  <Form.Control value={user.first_name} type="text" placeholder="Введите ставку" />
                </FloatingLabel>
             </Modal.Body>
             <Modal.Footer>
