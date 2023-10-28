@@ -25,7 +25,6 @@ const App = () => {
     { path: '/tests/:id', element: <TestCompleteView /> },
     { path: '/portal/:id', element: <PortalView /> },
     { path: '/department/:id', element: <DepartmentView /> },
-    { path: '/test', element: <TestsView/> },
     { path: '/conversions', element: <Conversions /> },
   ])
   return routes;

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import BaseWrapper, {BaseWrapperSlot} from "../../../components/BaseWrapper";
 import {Button, Modal} from "react-bootstrap";
-import ModalWindow from "../../../myModal/modal-window";
+import ModalWindow from "../../../myModal/ModalWindow";
 
 interface iConversionState {
    id: number,
@@ -20,49 +20,42 @@ const Conversions = () => {
    const conversion = [
       {
          id: 1,
-         name: "Sanya",
-         header: "Tututu",
-         title: "dfkksdkl lsdklfslkdf skldklsdf klsdfkl",
+         nameHr: "Семенов П.П.",
+         title: "Как правильно сварить деталь",
       },{
          id: 1,
-         name: "Sanya",
-         header: "Tututu",
-         title: "dfkksdkl lsdklfslkdf skldklsdf klsdfkl",
+         nameHr: "Семенов П.П.",
+         title: "Как правильно сварить деталь",
       },{
          id: 1,
-         name: "Sanya",
-         header: "Tututu",
-         title: "dfkksdkl lsdklfslkdf skldklsdf klsdfkl",
+         nameHr: "Семенов П.П.",
+         title: "Как правильно сварить деталь",
       },{
          id: 1,
-         name: "Sanya",
-         header: "Tututu",
-         title: "dfkksdkl lsdklfslkdf skldklsdf klsdfkl",
+         nameHr: "Семенов П.П.",
+         title: "Как правильно сварить деталь",
       }
    ]
    return (
-      <div className={'conversion--page'}>
-         <div className={'w-100 d-flex justify-content-center'}>
+      <div className={'conversion--page app-container'}>
+         <div className={'w-100'}>
             <Button onClick={()=>setModalShow(true)} className={"my-3 mx-auto"}>Добавить обращение</Button>
          </div>
          {conversion.map((value, key)=>
-            <BaseWrapper title={value.title} smallTitle={true}>
-               <BaseWrapperSlot>
-                  <div className="profile--inner__wrapper">
-                     <div className="profile--inner__wrapper--info-block">
-                        <div className="profile--inner__wrapper--info-block__item">
-                           title: {value.title}
-                        </div>
-                        <div className="profile--inner__wrapper--info-block__item">
-                           name: {value.name}
-                        </div>
-                        <div className="profile--inner__wrapper--info-block__item">
-                           header: {value.header}
+            <div className={'mb-5'}>
+               <BaseWrapper title={value.title} smallTitle={true}>
+                  <BaseWrapperSlot>
+                     <div className="profile--inner__wrapper">
+                        <div className="profile--inner__wrapper--info-block">
+                           <div className="profile--inner__wrapper--info-block__item">
+                              name: {value.nameHr}
+                           </div>
                         </div>
                      </div>
-                  </div>
-               </BaseWrapperSlot>
-            </BaseWrapper>
+                  </BaseWrapperSlot>
+               </BaseWrapper>
+            </div>
+
          )}
          {modalShow?
             <ModalWindow
