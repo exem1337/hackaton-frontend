@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import UserWrapper, { UserWrapperSlot } from '../components/UserWrapper'
 import { Button } from 'react-bootstrap'
 import BaseWrapper, { BaseWrapperSlot } from '../components/BaseWrapper'
@@ -8,6 +8,7 @@ import { MdModeEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom'
 import userStore from '../store/User'
 import ActionButton, { ActionButtonSlot } from '../components/ActionButton'
+import { useAuthGuard } from '../hooks/useAuthGuard'
 
 const themes = [
   {
@@ -59,6 +60,8 @@ const department = {
 const DepartmentView = () => {
   const navigate = useNavigate();
 
+  useAuthGuard(navigate);
+
   const onGoToTest = ({ completed, id }) => {
     if (completed) {
       return;
@@ -83,11 +86,11 @@ const DepartmentView = () => {
           <Button>Создать обращение</Button>
         </UserWrapperSlot>
       </UserWrapper>
-
+      { userStore.isLogin}
       <div className="department-view--themes">
         <BaseWrapper title="Темы">
           <BaseWrapperSlot>
-            { department.themes?.map((theme) => <div className="department-view--themes__theme">
+            { department.themes?.map((theme, key) => <div key={key} className="department-view--themes__theme">
               <BaseWrapper title={theme.title} smallTitle>
                 <BaseWrapperSlot>
                   { userStore.isAdmin || userStore.isPortalAdmin || userStore.isHrManager && 

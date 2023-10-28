@@ -1,7 +1,13 @@
 import React from 'react'
 import BaseWrapper, { BaseWrapperSlot } from '../components/BaseWrapper';
+import store from '../store/User';
+import { observer } from 'mobx-react-lite';
+import { useAuthGuard } from '../hooks/useAuthGuard';
+import { useNavigate } from 'react-router-dom';
 
-const Profile = () => {
+const Profile = observer(() => {
+  useAuthGuard(useNavigate());
+
   return (
     <div className="app-container">
       <div className="profile">
@@ -13,13 +19,13 @@ const Profile = () => {
               <div className="profile--inner__wrapper">
                 <div className="profile--inner__wrapper--info-block">
                   <div className="profile--inner__wrapper--info-block__item">
-                    ФИО: Акладский Данила Вячеславович
+                    ФИО: { store.user?.last_name } { store.user?.first_name } { store.user?.middle_name }
                   </div>  
                   <div className="profile--inner__wrapper--info-block__item">
-                    Электронная почта: user@example.com
+                    Электронная почта: { store.user?.email }
                   </div>  
                   <div className="profile--inner__wrapper--info-block__item">
-                    Мобильный телефон: +79010857228
+                    Мобильный телефон: { store.user?.phone }
                   </div>  
                 </div>
 
@@ -41,6 +47,6 @@ const Profile = () => {
       </div>
     </div>
   )
-}
+})
 
 export default Profile;
