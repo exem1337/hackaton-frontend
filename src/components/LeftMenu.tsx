@@ -27,16 +27,16 @@ const LeftMenu = observer(() => {
     <Nav className="px-3 left-menu-nav-bar">
       <Container className={"d-flex flex-column left-menu-container"}>
         <Nav className="mb-auto d-flex flex-column">
-          <Link to={""} className={"nav-link d-flex align-items-center"}>
+          <Link to={"/portal"} className={"nav-link d-flex align-items-center"}>
             <span className={"d-flex align-items-center"}>
               <BsFillBuildingFill className={"me-2"} />
             </span>
             Наша компания
           </Link>
-          <Link to={"/department/:id"} className={"nav-link d-flex align-items-center"}>
+          <Link to={`/department/${userStore?.user?.department_id}`} className={"nav-link d-flex align-items-center"}>
             <span className={"d-flex align-items-center"}>
               <GiBlackBook className={"me-2"} />
-            </span>{" "}
+            </span>{""}
             Мое обучение
           </Link>
           <Link to={"/tests"} className={"nav-link d-flex align-items-center"}>

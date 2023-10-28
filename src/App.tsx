@@ -30,11 +30,12 @@ const App = () => {
       {path: '/profile', element: <Profile/>},
       {path: '/tests', element: <TestsView/>},
       {path: '/tests/:id', element: <TestCompleteView/>},
-      {path: '/portal/:id', element: <PortalView/>},
+      { path: '/portal', element: <PortalView /> },
       {path: '/department/:id', element: <DepartmentView/>},
       {path: '/conversions', element: <Conversions/>},
       {path: '/admin', element: <AdminPage/>},
       {path: '/employee', element: <DbEmployeePage/>},
+
    ])
    return routes;
 }

@@ -10,6 +10,8 @@ export interface IUser{
    roles: Array<EUserRole>;
    avatar_salt?: string;
    avatar?: string;
+   portal_id?: number;
+   department_id?: number;
 }
 
 export interface IUserInfoResponse{
@@ -22,6 +24,12 @@ export interface IUserInfoResponse{
    roles: Array<IUserInfoRolesResponse>;
    avatar_salt?: string;
    avatar?: string;
+   department_id?: number;
+   department: IUserInfoDepartment;
+}
+
+export interface IUserInfoDepartment {
+   
 }
 
 export interface IUserInfoRolesResponse {

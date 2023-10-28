@@ -27,7 +27,10 @@ export default class AuthService {
    static async getUserInfoById(id: number) {
       const userInfo = (await $api.get(`/users/one/${id}`)).data as IUserInfoResponse;
       userInfo.roles = userInfo.roles?.map((role) => role.name) as unknown as Array<IUserInfoRolesResponse>;
-      userInfo.avatar = await FileService.getFileBase64(userInfo.avatar_salt)
+
+      if (userInfo.avatar_salt) {
+         userInfo.avatar = await FileService.getFileBase64(userInfo.avatar_salt)
+      }
       return userInfo as unknown as IUser;
    }
 

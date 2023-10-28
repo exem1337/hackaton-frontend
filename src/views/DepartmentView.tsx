@@ -1,66 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import UserWrapper, { UserWrapperSlot } from '../components/UserWrapper'
 import { Button } from 'react-bootstrap'
 import BaseWrapper, { BaseWrapperSlot } from '../components/BaseWrapper'
 import BaseFileDownload from '../components/BaseFileDownload'
 import { AiOutlineArrowRight, AiFillDelete } from 'react-icons/ai';
 import { MdModeEdit } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import userStore from '../store/User'
 import ActionButton, { ActionButtonSlot } from '../components/ActionButton'
 import { useAuthGuard } from '../hooks/useAuthGuard'
+import { IPortalDepartment } from '../model/portal.model'
+import api from '../http'
+import { observer } from 'mobx-react-lite'
 
-const themes = [
-  {
-    id: 1,
-    title: 'Название темы 1',
-    fileName: 'Файл',
-    tests: [
-      {
-        id: 22,
-        title: 'Тест 1',
-        completed: false,
-      },
-      {
-        id: 23,
-        title: 'Тест 2',
-        completed: true,
-      }
-    ]
-  },
-  {
-    id: 2,
-    title: 'Название темы 2',
-    fileName: 'Файл',
-    tests: [
-      {
-        id: 22,
-        title: 'Тест 1',
-        completed: false,
-      },
-      {
-        id: 23,
-        title: 'Тест 2',
-        completed: true,
-      }
-    ]
-  }
-]
-
-const department = {
-  id: 1,
-  hr: {
-    name: 'Елена',
-    last_name: 'Суховей',
-  },
-  themes
-}
-
-
-const DepartmentView = () => {
+const DepartmentView = observer(() => {
   const navigate = useNavigate();
-
   useAuthGuard(navigate);
+  const params = useParams();
+
+  const [department, setDepartment] = useState({} as IPortalDepartment);
+
+  const getDepartment = async () => {
+    try {
+      const departmentResponse = (await api.get(`/departments/one/${params.id}`))?.data;
+      setDepartment(departmentResponse);
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
 
   const onGoToTest = ({ completed, id }) => {
     if (completed) {
@@ -69,6 +37,10 @@ const DepartmentView = () => {
 
     navigate(`/tests/${id}`);
   }
+
+  useEffect(() => {
+    getDepartment();
+  }, [])
 
   const onEditTheme = (theme) => {
 
@@ -81,19 +53,19 @@ const DepartmentView = () => {
   return (
     <div className="app-container department-view">
       <h1>Мое обучение</h1>
-      <UserWrapper name={department.hr.name} last_name={department.hr.last_name} positions='HR-менеджер'>
+      <UserWrapper name={''} last_name={''} positions='HR-менеджер'>
         <UserWrapperSlot>
           <Button>Создать обращение</Button>
         </UserWrapperSlot>
       </UserWrapper>
-      { userStore.isLogin}
+
       <div className="department-view--themes">
         <BaseWrapper title="Темы">
           <BaseWrapperSlot>
-            { department.themes?.map((theme, key) => <div key={key} className="department-view--themes__theme">
-              <BaseWrapper title={theme.title} smallTitle>
+            { department.topic?.map((theme, key) => <div key={key} className="department-view--themes__theme">
+              <BaseWrapper title={theme.name} smallTitle>
                 <BaseWrapperSlot>
-                  { userStore.isAdmin || userStore.isPortalAdmin || userStore.isHrManager && 
+                  { userStore?.isOperatingRole() && 
                     <div className="department-view--themes__theme--actions">
                       <ActionButton text='Редактировать' handler={() => onEditTheme(theme)}>
                         <ActionButtonSlot>
@@ -109,7 +81,7 @@ const DepartmentView = () => {
                     </div>
                   }
                   <div className="department-view--themes__theme--inner">
-                    <BaseFileDownload title='Скачать обучающий материал' fileId='s' />
+                    <BaseFileDownload title='Скачать обучающий материал' fileId={theme.blob_id} />
                     <ActionButton className='reverse accent' text='Перейти к тестированиям' handler={() => navigate('/tests')}>
                       <ActionButtonSlot>
                         <AiOutlineArrowRight />
@@ -124,6 +96,6 @@ const DepartmentView = () => {
       </div>
     </div>
   )
-}
+})
 
 export default DepartmentView;
