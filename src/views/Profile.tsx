@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import BaseWrapper, { BaseWrapperSlot } from '../components/BaseWrapper';
 import store from '../store/User';
 import { observer } from 'mobx-react-lite';
@@ -11,7 +11,7 @@ const Profile = observer(() => {
   return (
     <div className="app-container">
       <div className="profile">
-        <div className="profile--avatar"></div>
+        { store.user.avatar ? <img src={`data:image/png;base64,${store.user.avatar as unknown as string}`} /> : <div className="profile--avatar"></div> }
 
         <div className="profile--inner">
           <BaseWrapper title="Информация о пользователе">

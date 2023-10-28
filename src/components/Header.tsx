@@ -17,6 +17,10 @@ const Header = observer(() => {
     navigate('/');
   }
 
+  const onGoToProfile = () => {
+    navigate('/profile')
+  }
+
   return(
 		<>
       <Navbar data-bs-theme="dark" className={'position-sticky top-0 z-2'}>
@@ -33,9 +37,10 @@ const Header = observer(() => {
             {
               userStore.isLogin 
                 ? <div className="auth-info">
-                  <span>{ userStore.user?.last_name } { userStore.user?.first_name } { userStore.user?.middle_name }</span>
-                  <Button className={'d-flex align-items-center'} onClick={() => onLogout()}>Выйти <BiSolidExit/></Button>
-                </div>
+                    <span onClick={onGoToProfile}>{ userStore.user?.last_name } { userStore.user?.first_name } { userStore.user?.middle_name }</span>
+                    { userStore.user?.avatar && <img src={`data:image/png;base64,${userStore.user?.avatar as unknown as string}`} /> }
+                    <Button onClick={() => onLogout()}>Выйти</Button>
+                  </div>
                 : <Link to="/auth" className={"dropdown-item text-sm-center btn"}>Войти</Link>
             }
 					</Nav>
