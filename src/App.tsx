@@ -8,10 +8,9 @@ import {
   useRoutes,
 } from "react-router-dom";
 import './App.scss';
-
 import Profile from './views/Profile';
 import LeftMenu from "./components/LeftMenu";
-import Tests from "./views/page-left-menu/task-page/Tests";
+import TestsView from './views/TestsView';
 
 const App = () => {
   const routes = useRoutes([
@@ -19,7 +18,7 @@ const App = () => {
     { path: '/auth', element: <AuthView /> },
     { path: '/profile', element: <Profile /> },
     { path: '/education', element: <Profile /> },
-    { path: '/test', element: <Tests/> },
+    { path: '/tests', element: <TestsView/> },
   ])
   return routes;
 }
