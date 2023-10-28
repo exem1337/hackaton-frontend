@@ -12,6 +12,7 @@ import './App.scss';
 import Profile from './views/Profile';
 import LeftMenu from "./views/left-menu/LeftMenu";
 import Tests from "./views/page-left-menu/task-page/Tests";
+import Conversions from "./views/page-left-menu/conversions-page/conversions";
 
 const App = () => {
   const routes = useRoutes([
@@ -21,7 +22,7 @@ const App = () => {
      { path: '/education', element: <Profile /> },
      { path: '/test', element: <Tests/> },
      // { path: '/profile', element: <Profile /> },
-     // { path: '/profile', element: <Profile /> },
+     { path: '/conversions', element: <Conversions /> },
      // { path: '/profile', element: <Profile /> },
      // { path: '/profile', element: <Profile /> },
      // { path: '/profile', element: <Profile /> },

@@ -42,7 +42,7 @@ const LeftMenu = () => {
             </span>
             Мои результаты
           </Link>
-          <Link to={""} className={"nav-link d-flex align-items-center"}>
+          <Link to={"/conversions"} className={"nav-link d-flex align-items-center"}>
             <span className={"d-flex align-items-center"}>
               <PiNotepadBold className={"me-2"} />
             </span>
