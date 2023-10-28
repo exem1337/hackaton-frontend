@@ -71,6 +71,7 @@ body {
   display: flex;
   gap: 4px;
   align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: $accent;
@@ -79,6 +80,10 @@ body {
   &:disabled {
     background-color: $disabled;
     pointer-events: none;
+  }
+
+  &:focus {
+    background-color: $primary;
   }
 }
 

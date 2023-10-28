@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import AuthView from './views/AuthView';
@@ -15,8 +15,13 @@ import TestCompleteView from './views/TestCompleteView';
 import Conversions from "./views/page-left-menu/conversions-page/conversions";
 import PortalView from './views/PortalView';
 import DepartmentView from './views/DepartmentView';
+import AuthService from './service/AuthService';
 
 const App = () => {
+  useEffect(() => {
+    AuthService.refresh();
+  }, [])
+
   const routes = useRoutes([
     { path: '/', element: <LandingView /> },
     { path: '/auth', element: <AuthView /> },

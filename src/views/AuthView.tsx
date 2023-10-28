@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Validation } from "../validation/validation";
-import user from "../store/User";
+import AuthService from "../service/AuthService";
+import { useNavigate } from "react-router-dom";
 
 const AuthView = () => {
   const [form, setForm] = useState({
@@ -9,8 +10,10 @@ const AuthView = () => {
     password: "",
     stay: false,
   });
-  const [errors, setErrors] = useState({}); // поле и string
-  const [stateErrors, setStateErrors] = useState({}); // поле и bool
+  const [errors, setErrors] = useState({}); 
+  const [stateErrors, setStateErrors] = useState({}); 
+  const navigate = useNavigate();
+
   const setField = (field: string, value: string | boolean) => {
     setForm({
       ...form,
@@ -30,7 +33,8 @@ const AuthView = () => {
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
     } else {
-      await user.login(form);
+      await AuthService.login(form.email, form.password);
+      navigate('/');
     }
     setStateErrors(stateErr);
   }

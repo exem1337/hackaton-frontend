@@ -5,9 +5,10 @@ import BaseWrapper, { BaseWrapperSlot } from '../components/BaseWrapper';
 const TestCompleteView = () => {
   const testService = new TestService();
 
-  useEffect(() => {
-
-  }, [])
+  const testResponse = {
+    id: 1,
+    
+  }
 
   return (
     <div className="app-container test-complete">

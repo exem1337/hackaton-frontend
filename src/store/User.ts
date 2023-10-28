@@ -1,62 +1,44 @@
 import {makeAutoObservable} from "mobx";
 import {IUser} from "../model/IUser";
-import AuthService from "../service/AuthService";
 import { EUserRole } from "../enums/userRole.enum";
 
 export default new class User {
    user = {
-      id: 1,
-      email: 'example@mail.ru',
-      role: EUserRole.HrManager,
-      first_name: 'Данила',
-      last_name: 'Акладский',
-      middle_name: 'Вячеславович',
-      phone: '+79010857228'
    } as unknown as IUser
-   isLoading = false;
-   messages = '';
+   isLogin = false;
 
    constructor() {
       makeAutoObservable(this);
    }
    
    get isAdmin(): boolean {
-      return this.user?.role === EUserRole.Admin;
+      return this.user?.roles?.includes(EUserRole.Admin);
    }
 
    get isPortalAdmin(): boolean {
-      return this.user?.role === EUserRole.PortalAdmin;
+      return this.user?.roles?.includes(EUserRole.PortalAdmin);
    }
 
    get isHrManager(): boolean {
-      return this.user?.role === EUserRole.HrManager;
+      return this.user?.roles?.includes(EUserRole.HrManager);
    }
 
    get isEmployee(): boolean {
-      return this.user?.role === EUserRole.Employee;
+      return this.user?.roles?.includes(EUserRole.Employee);
    }
 
-   get isLogin(): boolean {
-      return !!this.user?.id;
+  
+   logout() {
+      this.user = {} as IUser;
+      this.isLogin = false;
    }
 
    setUser(user: IUser): void {
       this.user = user;
+      this.isLogin = true;
    }
 
    setMessages(message: string): void {
-      this.messages = message;
-   }
-
-   async login(form): Promise<void> {
-      const {email, password} = form
-      try {
-         const response = await AuthService.login(email, password);
-         localStorage.setItem('token', response.data.accessToken);
-         this.setUser(response.data.user);
-      } catch (e) {
-         console.error("error: ", e.response);
-         this.setMessages(e.response?.data?.message);
-      }
+      // this.messages = message;
    }
 }

@@ -14,8 +14,9 @@ import { TbReportAnalytics } from "react-icons/tb";
 import { PiNotepadBold } from "react-icons/pi";
 import { DISABLED_LEFT_MENU_LOCATIONS } from "../constants/disabledLeftMenuLocations.const";
 import userStore from '../store/User';
+import { observer } from "mobx-react-lite";
 
-const LeftMenu = () => {
+const LeftMenu = observer(() => {
   const { pathname } = useLocation();
 
   if (DISABLED_LEFT_MENU_LOCATIONS.includes(pathname) || !userStore.isLogin) {
@@ -101,6 +102,6 @@ const LeftMenu = () => {
       </Container>
     </Nav>
   );
-};
+});
 
 export default LeftMenu;
