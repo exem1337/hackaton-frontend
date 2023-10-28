@@ -62,7 +62,7 @@ const AuthView = () => {
               }}
               required
               type="email"
-              placeholder="Enter email"
+              placeholder="Введите адрес электронной почты"
               isInvalid={!!errors["email"]}
               isValid={stateErrors["email"]}
             />
@@ -80,7 +80,7 @@ const AuthView = () => {
               onChange={(e) => {
                 setField("password", e.target.value);
               }}
-              placeholder="Password"
+              placeholder="Введите пароль"
               value={form.password}
               isValid={stateErrors["password"]}
             />
@@ -122,7 +122,7 @@ const AuthView = () => {
               Войти
             </Button>
           </Form.Group>
-          <Button onClick={() => navigate('/signup')}>Зарегистрироваться</Button>
+          <Button className="w-100" onClick={() => navigate('/signup')}>Зарегистрироваться</Button>
         </Form>
       </div>
     </Container>

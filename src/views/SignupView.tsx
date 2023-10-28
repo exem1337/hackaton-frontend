@@ -4,12 +4,15 @@ import { Validation } from "../validation/validation";
 import AuthService from "../service/AuthService";
 import { useNavigate } from "react-router-dom";
 
-const AuthView = () => {
+const SignupView = () => {
   const [form, setForm] = useState({
     email: "",
     password: "",
     name: "",
     last_name: "",
+    inn: "",
+    orgName: "",
+    orgAddress: "",
     phone: "",
     stay: false,
   });
@@ -54,7 +57,7 @@ const AuthView = () => {
           onSubmit={handleSubmit}
         >
           <div className={"text-center"}>
-            <h5>Войти в аккаунт</h5>
+            <h5>Зарегистрироваться</h5>
           </div>
           <Form.Group as={Col} className="mb-3" controlId="formBasicEmail">
             <Form.Label>Электронная почта</Form.Label>
@@ -65,7 +68,6 @@ const AuthView = () => {
               }}
               required
               type="email"
-              placeholder="Enter email"
               isInvalid={!!errors["email"]}
               isValid={stateErrors["email"]}
             />
@@ -83,7 +85,6 @@ const AuthView = () => {
               onChange={(e) => {
                 setField("password", e.target.value);
               }}
-              placeholder="Password"
               value={form.password}
               isValid={stateErrors["password"]}
             />
@@ -93,28 +94,83 @@ const AuthView = () => {
               </Row>
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group>
-            <Row>
-              <Col xs={5}>
-                <Form.Group className="mb-3">
-                  <Form.Check
-                    type="checkbox"
-                    checked={form.stay}
-                    onChange={(e) => {
-                      setField("stay", e.target.checked);
-                    }}
-                    label="Не выходить"
-                    className={"auth_point_check"}
-                  />
-                </Form.Group>
-              </Col>
-              <Col xs={7} className={"d-flex justify-content-end"}>
-                <a className={`link-dark auth_point`}>
-                  <strong>Восстановить пароль</strong>
-                </a>
-              </Col>
-            </Row>
+
+          <Form.Group as={Col} className="mb-3" controlId="formBasicPhone">
+            <Form.Label>Номер телефона</Form.Label>
+            <Form.Control
+              required
+              isInvalid={!!errors["phone"]}
+              type="text"
+              onChange={(e) => {
+                setField("phone", e.target.value);
+              }}
+              value={form.phone}
+              isValid={stateErrors["phone"]}
+            />
+            <Form.Control.Feedback type="invalid">
+              <Row>
+                <Col xs={7}>{errors["phone"]}</Col>
+              </Row>
+            </Form.Control.Feedback>
           </Form.Group>
+
+          <Form.Group as={Col} className="mb-3" controlId="formBasiInn">
+            <Form.Label>ИНН организации</Form.Label>
+            <Form.Control
+              required
+              isInvalid={!!errors["inn"]}
+              type="text"
+              onChange={(e) => {
+                setField("inn", e.target.value);
+              }}
+              value={form.inn}
+              isValid={stateErrors["inn"]}
+            />
+            <Form.Control.Feedback type="invalid">
+              <Row>
+                <Col xs={7}>{errors["inn"]}</Col>
+              </Row>
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group as={Col} className="mb-3" controlId="formBasiorgName">
+            <Form.Label>Название организации</Form.Label>
+            <Form.Control
+              required
+              isInvalid={!!errors["orgName"]}
+              type="text"
+              onChange={(e) => {
+                setField("orgName", e.target.value);
+              }}
+              value={form.inn}
+              isValid={stateErrors["orgName"]}
+            />
+            <Form.Control.Feedback type="invalid">
+              <Row>
+                <Col xs={7}>{errors["orgName"]}</Col>
+              </Row>
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group as={Col} className="mb-3" controlId="formBasiorgAddress">
+            <Form.Label>Название организации</Form.Label>
+            <Form.Control
+              required
+              isInvalid={!!errors["orgAddress"]}
+              type="text"
+              onChange={(e) => {
+                setField("orgAddress", e.target.value);
+              }}
+              value={form.inn}
+              isValid={stateErrors["orgAddress"]}
+            />
+            <Form.Control.Feedback type="invalid">
+              <Row>
+                <Col xs={7}>{errors["orgAddress"]}</Col>
+              </Row>
+            </Form.Control.Feedback>
+          </Form.Group>
+          
           <Form.Group className="mb-3">
             <Button
               variant={"outline-secondary"}
@@ -122,14 +178,13 @@ const AuthView = () => {
               className={`w-100`}
               disabled={!form.email || !form.password}
             >
-              Войти
+              Зарегистрироваться
             </Button>
           </Form.Group>
-          <Button onClick={() => navigate('/signup')}>Зарегистрироваться</Button>
         </Form>
       </div>
     </Container>
   );
 };
 
-export default AuthView;
+export default SignupView;

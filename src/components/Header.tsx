@@ -2,15 +2,17 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import userStore from '../store/User';
 import { Button } from 'react-bootstrap';
 import AuthService from '../service/AuthService';
 import { observer } from 'mobx-react-lite';
+import { DISABLED_LOGIN_BUTTON_LOCATIONS } from '../constants/disabledLoginButtonLocations.const';
 
 const Header = observer(() => {
   const navigate = useNavigate();
-  
+  const { pathname } = useLocation();
+
   const onLogout = () => {
     AuthService.logout();
     navigate('/');
@@ -25,12 +27,15 @@ const Header = observer(() => {
       <Navbar data-bs-theme="dark">
         <Container>
           <Navbar.Brand href="#home">ПрофТестиум</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#opportunity">Возможности</Nav.Link>
-            <Nav.Link href="#features">Тарифы</Nav.Link>
-            <Nav.Link href="#pricing">Внедрение</Nav.Link>
-						<Nav.Link href="#feedback">Отзывы</Nav.Link>
-          </Nav>
+          { 
+            ['', '/'].includes(pathname) &&
+            <Nav className="me-auto">
+              <Nav.Link href="#opportunity">Возможности</Nav.Link>
+              <Nav.Link href="#features">Тарифы</Nav.Link>
+              <Nav.Link href="#pricing">Внедрение</Nav.Link>
+              <Nav.Link href="#feedback">Отзывы</Nav.Link>
+            </Nav>
+          }
 
 					<Nav className = "ms-auto">
             {
@@ -40,7 +45,7 @@ const Header = observer(() => {
                     { userStore.user?.avatar && <img src={`data:image/png;base64,${userStore.user?.avatar as unknown as string}`} /> }
                     <Button onClick={() => onLogout()}>Выйти</Button>
                   </div>
-                : <Link to="/auth" className={"dropdown-item text-sm-center btn"}>Войти</Link>
+                : !DISABLED_LOGIN_BUTTON_LOCATIONS.includes(pathname) && <Link to="/auth" className={"dropdown-item text-sm-center btn"}>Войти</Link>
             }
 					</Nav>
         </Container>

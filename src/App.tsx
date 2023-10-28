@@ -17,6 +17,8 @@ import PortalView from './views/PortalView';
 import DepartmentView from './views/DepartmentView';
 import AdminPage from "./views/admin-page/AdminPage";
 import AuthService from './service/AuthService';
+import SignupView from './views/SignupView';
+import TestEditView from './views/TestsEditView';
 
 const App = () => {
   useEffect(() => {
@@ -28,11 +30,13 @@ const App = () => {
     { path: '/auth', element: <AuthView /> },
     { path: '/profile', element: <Profile /> },
     { path: '/tests', element: <TestsView /> },
+    { path: '/tests/edit/:id', element: <TestEditView /> },
     { path: '/tests/:id', element: <TestCompleteView /> },
     { path: '/portal', element: <PortalView /> },
     { path: '/department/:id', element: <DepartmentView /> },
     { path: '/conversions', element: <Conversions /> },
-     {path: '/admin', element: <AdminPage/>},
+    { path: '/admin', element: <AdminPage/> },
+    { path: '/signup', element: <SignupView /> }
   ])
   return routes;
 }
