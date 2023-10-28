@@ -7,7 +7,7 @@ export default new class User {
    user = {
       id: 1,
       email: 'example@mail.ru',
-      role: EUserRole.Employee,
+      role: EUserRole.HrManager,
       first_name: 'Данила',
       last_name: 'Акладский',
       middle_name: 'Вячеславович',

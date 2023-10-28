@@ -2,11 +2,34 @@ import React from 'react'
 import UserWrapper, { UserWrapperSlot } from '../components/UserWrapper'
 import { Button } from 'react-bootstrap'
 import BaseWrapper, { BaseWrapperSlot } from '../components/BaseWrapper'
+import BaseFileDownload from '../components/BaseFileDownload'
+import { AiOutlineArrowRight, AiFillDelete } from 'react-icons/ai';
+import { MdModeEdit } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom'
+import userStore from '../store/User'
+import ActionButton, { ActionButtonSlot } from '../components/ActionButton'
 
 const themes = [
   {
     id: 1,
-    title: 'Тема 1',
+    title: 'Название темы 1',
+    fileName: 'Файл',
+    tests: [
+      {
+        id: 22,
+        title: 'Тест 1',
+        completed: false,
+      },
+      {
+        id: 23,
+        title: 'Тест 2',
+        completed: true,
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: 'Название темы 2',
     fileName: 'Файл',
     tests: [
       {
@@ -34,6 +57,24 @@ const department = {
 
 
 const DepartmentView = () => {
+  const navigate = useNavigate();
+
+  const onGoToTest = ({ completed, id }) => {
+    if (completed) {
+      return;
+    }
+
+    navigate(`/tests/${id}`);
+  }
+
+  const onEditTheme = (theme) => {
+
+  }
+
+  const onDeleteTheme = (theme) => {
+
+  }
+
   return (
     <div className="app-container department-view">
       <h1>Мое обучение</h1>
@@ -47,10 +88,30 @@ const DepartmentView = () => {
         <BaseWrapper title="Темы">
           <BaseWrapperSlot>
             { department.themes?.map((theme) => <div className="department-view--themes__theme">
-              <BaseWrapper title={theme.title}>
+              <BaseWrapper title={theme.title} smallTitle>
                 <BaseWrapperSlot>
-                  <div className="department-view--theme__file">
-                    { theme.fileName }
+                  { userStore.isAdmin || userStore.isPortalAdmin || userStore.isHrManager && 
+                    <div className="department-view--themes__theme--actions">
+                      <ActionButton text='Редактировать' handler={() => onEditTheme(theme)}>
+                        <ActionButtonSlot>
+                          <MdModeEdit />
+                        </ActionButtonSlot>     
+                      </ActionButton> 
+
+                      <ActionButton text='Удалить' handler={() => onDeleteTheme(theme)}>
+                        <ActionButtonSlot>
+                          <AiFillDelete />
+                        </ActionButtonSlot>     
+                      </ActionButton> 
+                    </div>
+                  }
+                  <div className="department-view--themes__theme--inner">
+                    <BaseFileDownload title='Скачать обучающий материал' fileId='s' />
+                    <ActionButton className='reverse accent' text='Перейти к тестированиям' handler={() => navigate('/tests')}>
+                      <ActionButtonSlot>
+                        <AiOutlineArrowRight />
+                      </ActionButtonSlot>     
+                    </ActionButton> 
                   </div>
                 </BaseWrapperSlot>
               </BaseWrapper>

@@ -12,7 +12,7 @@ interface IBaseWrapperProps {
 const BaseWrapper = (props: IBaseWrapperProps) => {
   return (
     <div className="base-wrapper">
-      <h1 className={props.smallTitle? "base-wrapper-small-title" : null }>{ props.title }</h1>
+      <h1 className={props.smallTitle && "base-wrapper-small-title"}>{ props.title }</h1>
       <BaseWrapperSlot.Renderer childs={props.children} />
     </div>
   )
