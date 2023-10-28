@@ -8,6 +8,7 @@
 @import url(./styles/tests-page.scss);
 @import url(./styles/test-page.scss);
 @import url(./styles/inputs.scss);
+@import url(./styles/conversion-page.scss);
 @import "./styles/variables.scss";
 
 body {
@@ -85,5 +86,8 @@ body {
     &:last-child {
       margin-bottom: 0;
     }
+  }
+  &-small-title {
+    font-size: 20px !important;
   }
 }

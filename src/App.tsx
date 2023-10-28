@@ -12,6 +12,7 @@ import Profile from './views/Profile';
 import LeftMenu from "./components/LeftMenu";
 import TestsView from './views/TestsView';
 import TestCompleteView from './views/TestCompleteView';
+import Conversions from "./views/page-left-menu/conversions-page/conversions";
 
 const App = () => {
   const routes = useRoutes([
@@ -20,7 +21,12 @@ const App = () => {
     { path: '/profile', element: <Profile /> },
     { path: '/education', element: <Profile /> },
     { path: '/tests', element: <TestsView /> },
-    { path: '/tests/:id', element: <TestCompleteView /> }
+    { path: '/tests/:id', element: <TestCompleteView /> },
+     { path: '/education', element: <Profile /> },
+     { path: '/test', element: <TestsView/> },
+     { path: '/conversions', element: <Conversions /> },
+
+
   ])
   return routes;
 }
