@@ -53,6 +53,8 @@ export interface IUsers{
    avatar: string,
    email: string,
    position: string,
-   phone: string
+   phone: string,
+   status: string,
+   rate: string
 }
 

@@ -11,6 +11,7 @@ import ModalDbEmployees from "./ModalDbEmployees";
 import EmployerService from "../../service/EmployerService";
 import userStore from "../../store/User";
 import {IUsers} from "../../model/IUser";
+import ConfirmModal from "../../components/ConfirmModal";
 
 const DbEmployeePage = () => {
    const [activeUser, setActiveUSer] = useState({
@@ -48,6 +49,10 @@ const DbEmployeePage = () => {
          id: id,
          editStatus: false,
       })
+   }
+
+   function deleteSubmit(){
+
    }
 
    return (
@@ -102,10 +107,24 @@ const DbEmployeePage = () => {
          </BaseWrapper>
 
          {
-            activeUser.id !== null &&
-            <ModalWindow show={activeUser.id !== null} onHide={() => activeUserRestart()}>
-               <ModalDbEmployees activeUserRestart={activeUserRestart} editStatus={activeUser.editStatus} id={activeUser.id}/>
-            </ModalWindow>
+            activeUser.id !== null && (
+               activeUser.editStatus ?
+               <ModalWindow show={activeUser.id !== null} onHide={() => activeUserRestart()}>
+                  <ModalDbEmployees activeUserRestart={activeUserRestart} id={activeUser.id}/>
+               </ModalWindow>
+                  :
+                  <ConfirmModal header={'Увольнение сотрудника'} onHide={activeUserRestart} onHandel={deleteSubmit}>
+                        <p>
+                           Вы действительно уверены что хотите уволить
+                           {user[user.findIndex((value)=>value.id === activeUser.id)].last_name +' '+
+                              user[user.findIndex((value)=>value.id === activeUser.id)].first_name+' '+
+                              user[user.findIndex((value)=>value.id === activeUser.id)].middle_name
+                           }
+                           ?
+                        </p>
+                  </ConfirmModal>
+            )
+
          }
       </div>
    );

@@ -8,9 +8,11 @@ import { FileService } from "./File.service";
 export default class AuthService {
    static async login(email: string, password: string): Promise<void> {
       try {
+         console.log(email, password, "1")
          const userCredentials = (await $api.post<AuthResponse>('/auth/login', { username: email, password })).data as AuthResponse;
+         console.log("2")
          userStore.setUser(await this.getUserInfoById(userCredentials.id));
-         console.log(userCredentials)
+         console.log(userCredentials, "3")
          this.setTokenCookie(userCredentials)
       }
       catch (error) {
