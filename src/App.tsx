@@ -4,8 +4,8 @@ import Footer from './components/Footer';
 import AuthView from './views/AuthView';
 import LandingView from './views/LandingView';
 import {
-  BrowserRouter as Router,
-  useRoutes,
+   BrowserRouter as Router,
+   useRoutes,
 } from "react-router-dom";
 import './App.scss';
 import Profile from './views/Profile';
@@ -15,6 +15,7 @@ import TestCompleteView from './views/TestCompleteView';
 import Conversions from "./views/page-left-menu/conversions-page/conversions";
 import PortalView from './views/PortalView';
 import DepartmentView from './views/DepartmentView';
+import AdminPage from "./views/admin-page/AdminPage";
 import AuthService from './service/AuthService';
 
 const App = () => {
@@ -31,21 +32,22 @@ const App = () => {
     { path: '/portal/:id', element: <PortalView /> },
     { path: '/department/:id', element: <DepartmentView /> },
     { path: '/conversions', element: <Conversions /> },
+     {path: '/admin', element: <AdminPage/>},
   ])
   return routes;
 }
 
 const AppWrapper = () => {
-  return (
-    <Router>
-      <Header/>
-      <div className="app-wrapper">
-        <LeftMenu/>
-        <App />
-      </div>
-      {/* <Footer /> */}
-    </Router>
-  )
+   return (
+      <Router>
+         <Header/>
+         <div className="app-wrapper">
+            <LeftMenu/>
+            <App/>
+         </div>
+         {/* <Footer /> */}
+      </Router>
+   )
 }
 
 export default AppWrapper;
