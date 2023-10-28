@@ -1,5 +1,6 @@
 export enum EUserRole {
-  Common = 'common',
-  Organization = 'organization',
-  
+  Admin = 'admin',
+  PortalAdmin = 'portal_admin',
+  HrManager = 'hr_manager',
+  Employee = 'employee',
 }

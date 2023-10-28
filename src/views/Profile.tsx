@@ -1,9 +1,10 @@
 import React from 'react'
 import BaseWrapper, { BaseWrapperSlot } from '../components/BaseWrapper';
+import userStore from '../store/User';
 
 const Profile = () => {
   return (
-    <div className="container">
+    <div className="app-container">
       <div className="profile">
         <div className="profile--avatar"></div>
 

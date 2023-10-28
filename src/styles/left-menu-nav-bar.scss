@@ -2,10 +2,11 @@
 
 .left-menu-nav-bar {
   max-width: 260px;
-  height: calc(100vh - 55.9px);
+  height: 100%;
+  position: fixed;
+  left: 0;
   padding: 27.6px 0;
   background-color: $bg-darken;
-  top: 57px;
   border-right: $border-color;
 
   * {
