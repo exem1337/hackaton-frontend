@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import BaseWrapper, {BaseWrapperSlot} from "../../../components/BaseWrapper";
-import {Button, Modal} from "react-bootstrap";
+import {Button, FloatingLabel, Modal, Form} from "react-bootstrap";
 import ModalWindow from "../../../myModal/ModalWindow";
+import MyModalConversion from "./MyModalConversion";
 
 interface iConversionState {
    id: number,
@@ -68,9 +69,7 @@ const Conversions = () => {
                   </Modal.Title>
                </Modal.Header>
                <Modal.Body>
-                  <p>
-
-                  </p>
+                  <MyModalConversion/>
                </Modal.Body>
                <Modal.Footer>
                   <Button onClick={() => setModalShow(false)}>Close</Button>

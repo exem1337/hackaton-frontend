@@ -9,6 +9,7 @@
 @import url(./styles/test-page.scss);
 @import url(./styles/inputs.scss);
 @import url(./styles/conversion-page.scss);
+@import url(./styles/portal.scss);
 @import "./styles/variables.scss";
 
 body {
@@ -89,5 +90,19 @@ body {
   }
   &-small-title {
     font-size: 20px !important;
+  }
+}
+
+.row-list {
+  display: flex;
+  > p {
+    color: $additional-text-color;
+    margin-right: 20px;
+    font-weight: 600;
+
+    > span {
+      color: $text-black;
+      font-weight: 400;
+    }
   }
 }

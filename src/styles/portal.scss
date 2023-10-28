@@ -1,0 +1,12 @@
+@import "../styles/variables.scss";
+.portal--container{
+  margin-top: 60px !important;
+  margin-bottom: 60px !important;
+}
+.portal--card{
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+  background-color: $bg-darken !important;
+}
