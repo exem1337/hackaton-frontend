@@ -24,6 +24,7 @@ import TestBaseView from './views/TestBaseView';
 import MateralsBaseView from './views/MaterialsBaseView';
 import PageNotFound from './views/PageNotFound';
 import MyApplications from './views/my-applications-page/MyApplications';
+import MyResult from "./views/MyResult";
 
 const App = () => {
    useEffect(() => {
@@ -47,6 +48,7 @@ const App = () => {
       { path: '/employee', element: <DbEmployeePage /> },
       {path: '/employee', element: <DbEmployeePage/>},
       {path: '/my_applications', element: <MyApplications/>},
+      {path: '/my_result', element: <MyResult/>},
       {path: '/*', element: <PageNotFound/>},
       { path: '/testbase', element: <TestBaseView /> },
       { path: '/materials', element: <MateralsBaseView /> },
