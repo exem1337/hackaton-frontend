@@ -37,7 +37,7 @@ const Header = observer(() => {
         <Container>
           <img
             alt=""
-            src="images/ПТ.svg"
+            src="/images/ПТ.svg"
             width="30"
             height="30"
             className="d-inline-block align-top"
