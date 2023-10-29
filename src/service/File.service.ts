@@ -1,5 +1,7 @@
 import api from "../http";
 
+const API_URL = process.env.REACT_APP_CDN_URL;
+
 export class FileService {
   private static b64toBlob(b64Data: string, contentType = '', sliceSize = 512): Blob {
     const byteCharacters = atob(b64Data);
@@ -25,7 +27,7 @@ export class FileService {
     const file = await api.get(
       `/cdn/get/${salt}`,
       {
-        baseURL: 'http://animefeet.servebeer.com:5001',
+        baseURL: API_URL,
       }
     ).then((res) => res.data)
 
@@ -39,7 +41,7 @@ export class FileService {
     return await api.get(
       `/cdn/get/${salt}`,
       {
-        baseURL: 'http://animefeet.servebeer.com:5001',
+        baseURL: API_URL,
       }
     ).then((res) => res.data)
   }
@@ -57,7 +59,7 @@ export class FileService {
            headers: {
              'Content-Type': 'multipart/form-data',
            },
-           baseURL: 'http://animefeet.servebeer.com:5001',
+           baseURL: API_URL,
          }
       ).then((res) => res.data.salt)
 
@@ -72,7 +74,7 @@ export class FileService {
     const { key } = (await api.get(
       `/cdn/getBlobSalt/${blobId}`,
       {
-        baseURL: 'http://animefeet.servebeer.com:5001',
+        baseURL: API_URL,
       }
     ))?.data;
 
