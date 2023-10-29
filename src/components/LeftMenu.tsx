@@ -51,12 +51,15 @@ const LeftMenu = observer(() => {
             </span>
             Мои результаты
           </Link>
-          <Link to={"/conversions"} className={"nav-link d-flex align-items-center"}>
-            <span className={"d-flex align-items-center"}>
-              <PiNotepadBold className={"me-2"} />
-            </span>
-            Мои обращения{" "}
-          </Link>
+          { !userStore.isOperatingRole() &&
+            <Link to={"/conversions"} className={"nav-link d-flex align-items-center"}>
+              <span className={"d-flex align-items-center"}>
+                <PiNotepadBold className={"me-2"} />
+              </span>
+              Мои обращения{" "}
+            </Link>
+          }
+
           {  (userStore.isAdmin || userStore.isPortalAdmin || userStore.isHrManager) && <>
             <Link to={""} className={"nav-link d-flex align-items-center"}>
               <span className={"d-flex align-items-center"}>

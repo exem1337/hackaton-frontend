@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import BaseWrapper, { BaseWrapperSlot } from "../components/BaseWrapper";
 import { IPortal } from "../model/portal.model";
 import { useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const PortalView = observer(() => {
   const [portal, setPortal] = useState<IPortal>({} as IPortal);
+
   const navigate = useNavigate();
 
   const getPortal = async () => {
@@ -16,11 +18,15 @@ const PortalView = observer(() => {
     }
     
     const portalResponse = (await api.get(`/portal/one/${userStore.user?.portal_id}`))?.data;
-    setPortal(portalResponse);
+    setPortal(portalResponse?.portal);
   }
 
   const onGoToDepartment = (id: number): void => {
     navigate(`/department/${id}`);
+  }
+
+  const onCreateDepartment = () => {
+
   }
 
   useEffect(() => {
@@ -38,6 +44,7 @@ const PortalView = observer(() => {
           Описание портала: { portal?.description || '' }
           <div className="portal--departments">
             <h5>Подразделения</h5>
+            <Button onClick={onCreateDepartment}>Создать подразделение</Button>
             {
               portal.departments?.map((department, key) => 
                 <div 

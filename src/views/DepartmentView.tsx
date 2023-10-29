@@ -12,12 +12,13 @@ import { useAuthGuard } from '../hooks/useAuthGuard'
 import { IPortalDepartment } from '../model/portal.model'
 import api from '../http'
 import { observer } from 'mobx-react-lite'
+import ModalWindow from '../myModal/ModalWindow'
 
 const DepartmentView = observer(() => {
   const navigate = useNavigate();
   useAuthGuard(navigate);
   const params = useParams();
-
+  const [isShowModal, setIsShowModal] = useState<boolean>(false);
   const [department, setDepartment] = useState({} as IPortalDepartment);
 
   const getDepartment = async () => {
@@ -61,7 +62,13 @@ const DepartmentView = observer(() => {
 
       <div className="department-view--themes">
         <BaseWrapper title="Темы">
+          <Button onClick={() => setIsShowModal(true)}>Создать тему</Button>
           <BaseWrapperSlot>
+            {
+              isShowModal && <ModalWindow>
+                sas
+              </ModalWindow>
+            }
             { department.topic?.map((theme, key) => <div key={key} className="department-view--themes__theme">
               <BaseWrapper title={theme.name} smallTitle>
                 <BaseWrapperSlot>

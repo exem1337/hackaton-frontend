@@ -35,3 +35,21 @@
     }
   }
 }
+
+.portal {
+  margin-top: 60px !important;
+  margin-bottom: 60px !important;
+
+  &--departments {
+    margin-top: 24px;
+
+    &__department {
+      margin-top: 24px;
+      background-color: $bg-darken;
+      padding: 16px;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+}
