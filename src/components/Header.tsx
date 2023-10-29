@@ -46,7 +46,7 @@ const Header = observer(() => {
           {
             userStore.isLogin &&
             <Nav className="me-auto">
-              <Nav.Link href="/portal">Перейти к порталу</Nav.Link>
+              <Nav.Link href={userStore.isAdmin() ? "/admin" : "/portal"}>{ userStore.isAdmin() ? 'Панель администратора' : 'Перейти к порталу' }</Nav.Link>
             </Nav>
           }
 

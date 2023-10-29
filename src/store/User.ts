@@ -11,7 +11,7 @@ export default new class User {
       makeAutoObservable(this);
    }
    
-   get isAdmin(): boolean {
+   isAdmin(): boolean {
       return this.user?.roles?.includes(EUserRole.Admin);
    }
 
