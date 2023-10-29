@@ -4,8 +4,12 @@ import { Button, Form } from "react-bootstrap"
 import ActionButton, { ActionButtonSlot } from "../components/ActionButton"
 import { AiFillDelete } from "react-icons/ai";
 import api from '../http'
+import BaseWrapper, { BaseWrapperSlot } from "../components/BaseWrapper";
+import { useParams } from "react-router-dom";
 
 const TestEditView = () => {
+  const params = useParams();
+
   const [test, setTest] = useState<ITestEdit>({
     name: '',
     questions: [],
@@ -17,7 +21,8 @@ const TestEditView = () => {
       questions: [...test.questions, {
         id: Math.random(),
         text: '',
-        answers: []
+        answers: [],
+        score: 1,
       }]
     })
   }
@@ -41,8 +46,7 @@ const TestEditView = () => {
           ? [...question.answers, { 
               id: Math.random(),
               text: '',
-              score: 1,
-              isCorrect: false,
+              is_correct: false,
             }]
           : question.answers,
       }))
@@ -77,7 +81,7 @@ const TestEditView = () => {
         answers: question.answers?.some((answer) => answer.id === answerId) 
           ? question.answers?.map((answer) => ({
               ...answer,
-              isCorrect: answer.id === answerId
+              is_correct: answer.id === answerId
             })) 
           : question.answers
       }))
@@ -103,65 +107,68 @@ const TestEditView = () => {
 
   const onSave = async () => {
     await api.post('/tests/submitTest', {
-      ...test
+      ...test,
+      topic_id: Number(params.id),
     })
   }
 
   return (
     <div className="app-container test-edit">
-      test edit { test.name }
-      <Form.Control
-        type="text"
-        value={test.name}
-        placeholder="Название теста"
-        onChange={(e) => setTestName(e.target.value)}
-      />
-      <Button onClick={addNewQuestion}>Добавить вопрос</Button>
-      {
-        test.questions?.map((question) => 
-          <div className="test-edit--question">
-            <ActionButton text="Удалить" handler={() => onDeleteQuestion(question.id)}>
-              <ActionButtonSlot>
-                <AiFillDelete />
-              </ActionButtonSlot>
-            </ActionButton>
-            <Form.Control
-              type="text"
-              value={question.text}
-              placeholder="Текст вопроса"
-              onChange={(e) => setQuestionName(question.id, e.target.value)}
-            />
-            {
-              question.answers?.map((answer) => 
-                <div className="test-edit--question__answer">
-                  <Form.Control
-                    type="text"
-                    value={answer.text}
-                    placeholder="Текст варианта ответа"
-                    onChange={(e) => setAnswerTitle(answer.id, e.target.value)}
-                  />
-                  <Form.Check
-                    type="radio"
-                    label="Правильный ответ"
-                    checked={answer.isCorrect}
-                    onClick={() => onSetAnswerCorrect(answer.id)}
-                  />
-                  <ActionButton text="Удалить" handler={() => onDeleteAnswer(answer.id)}>
-                    <ActionButtonSlot>
-                      <AiFillDelete />
-                    </ActionButtonSlot>
-                  </ActionButton>
-                </div>
-              )
-            }
-            <Button onClick={() => addNewQuestionAnswer(question.id)}>Добавить вариант ответа</Button>
-          </div>
-        )
-      }
+      <BaseWrapper title="Редактор теста">
+        <BaseWrapperSlot>
+          <Form.Control
+            type="text"
+            className="test-edit--name"
+            value={test.name}
+            placeholder="Название теста"
+            onChange={(e) => setTestName(e.target.value)}
+          />
+          <Button onClick={addNewQuestion}>Добавить вопрос</Button>
+          {
+            test.questions?.map((question) => 
+              <div className="test-edit--question">
+                <ActionButton text="Удалить" handler={() => onDeleteQuestion(question.id)}>
+                  <ActionButtonSlot>
+                    <AiFillDelete />
+                  </ActionButtonSlot>
+                </ActionButton>
+                <Form.Control
+                  type="text"
+                  value={question.text}
+                  placeholder="Текст вопроса"
+                  onChange={(e) => setQuestionName(question.id, e.target.value)}
+                />
+                {
+                  question.answers?.map((answer) => 
+                    <div className="test-edit--question__answer">
+                      <Form.Control
+                        type="text"
+                        value={answer.text}
+                        placeholder="Текст варианта ответа"
+                        onChange={(e) => setAnswerTitle(answer.id, e.target.value)}
+                      />
+                      <Form.Check
+                        type="radio"
+                        label="Правильный ответ"
+                        checked={answer.is_correct}
+                        onClick={() => onSetAnswerCorrect(answer.id)}
+                      />
+                      <ActionButton text="Удалить" handler={() => onDeleteAnswer(answer.id)}>
+                        <ActionButtonSlot>
+                          <AiFillDelete />
+                        </ActionButtonSlot>
+                      </ActionButton>
+                    </div>
+                  )
+                }
+                <Button onClick={() => addNewQuestionAnswer(question.id)}>Добавить вариант ответа</Button>
+              </div>
+            )
+          }
+        </BaseWrapperSlot>
+      </BaseWrapper>
+     
       <Button onClick={onSave}>Сохранить</Button>
-      <pre>
-        { JSON.stringify(test) }
-      </pre>
     </div>
   )
 }

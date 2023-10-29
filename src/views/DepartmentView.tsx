@@ -13,18 +13,22 @@ import { IPortalDepartment } from '../model/portal.model'
 import api from '../http'
 import { observer } from 'mobx-react-lite'
 import ModalWindow from '../myModal/ModalWindow'
+import CreateThemeModal from '../components/modals/CreateThemeModal'
+import ConfirmModal from '../components/ConfirmModal'
 
 const DepartmentView = observer(() => {
   const navigate = useNavigate();
   useAuthGuard(navigate);
   const params = useParams();
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
+  const [isShowDeleteModal, setIsShowDeleteModal] = useState<boolean>(false);
   const [department, setDepartment] = useState({} as IPortalDepartment);
+  const [activeToDelete, setActiveToDelete] = useState()
 
   const getDepartment = async () => {
     try {
       const departmentResponse = (await api.get(`/departments/one/${params.id}`))?.data;
-      setDepartment(departmentResponse);
+      setDepartment(departmentResponse?.department);
     }
     catch (error) {
       console.error(error);
@@ -39,6 +43,17 @@ const DepartmentView = observer(() => {
     navigate(`/tests/${id}`);
   }
 
+  const onCloseModal = () => {
+    setIsShowDeleteModal(false);
+    setIsShowModal(false);
+    getDepartment();
+  }
+
+  const deleteSubmit = async () => {
+    await api.delete(`/topics/${activeToDelete}`);
+    await getDepartment();
+  }
+
   useEffect(() => {
     getDepartment();
   }, [])
@@ -48,7 +63,8 @@ const DepartmentView = observer(() => {
   }
 
   const onDeleteTheme = (theme) => {
-
+    setActiveToDelete(theme.id);
+    setIsShowDeleteModal(true);
   }
 
   return (
@@ -62,11 +78,21 @@ const DepartmentView = observer(() => {
 
       <div className="department-view--themes">
         <BaseWrapper title="Темы">
-          <Button onClick={() => setIsShowModal(true)}>Создать тему</Button>
           <BaseWrapperSlot>
+            <Button onClick={() => setIsShowModal(true)}>Создать тему</Button>
             {
-              isShowModal && <ModalWindow>
-                sas
+              <ModalWindow show={isShowModal} onHide={() => onCloseModal()}>
+                <CreateThemeModal onHide={() => onCloseModal()} departmentId={department?.id} />
+              </ModalWindow>
+            }
+            {
+              isShowDeleteModal && 
+              <ModalWindow show={isShowDeleteModal} onHide={() => onCloseModal()}>
+                <ConfirmModal header={'Удаление темы'} onHide={onCloseModal} onHandel={deleteSubmit}>
+                  <p>
+                    Вы действительно уверены что хотите удалить тему?
+                  </p>
+                </ConfirmModal>
               </ModalWindow>
             }
             { department.topic?.map((theme, key) => <div key={key} className="department-view--themes__theme">

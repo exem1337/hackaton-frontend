@@ -37,6 +37,12 @@ const Header = observer(() => {
               <Nav.Link href="#feedback">Отзывы</Nav.Link>
             </Nav>
           }
+          {
+            userStore.isLogin &&
+            <Nav className="me-auto">
+              <Nav.Link href="/portal">Перейти к порталу</Nav.Link>
+            </Nav>
+          }
 
 					<Nav className = "ms-auto">
             {

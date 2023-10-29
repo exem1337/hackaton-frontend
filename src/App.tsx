@@ -33,6 +33,7 @@ const App = () => {
       { path: '/tests', element: <TestsView /> },
       { path: '/tests/edit/:id', element: <TestEditView /> },
       { path: '/tests/:id', element: <TestCompleteView /> },
+      { path: '/topics/:id/test-create', element: <TestEditView /> },
       { path: '/portal', element: <PortalView /> },
       { path: '/department/:id', element: <DepartmentView /> },
       { path: '/conversions', element: <Conversions /> },
