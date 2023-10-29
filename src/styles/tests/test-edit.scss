@@ -1,0 +1,26 @@
+@import "../variables.scss";
+
+.test-edit {
+  margin-top: 60px !important;
+  margin-bottom: 60px !important;
+
+  &--name {
+    margin-bottom: 24px;
+  }
+
+  button {
+    margin-top: 24px;
+  }
+
+  &--question {
+    border-radius: 8px;
+    margin-top: 24px;
+    border: 1px solid $border-color;
+    padding: 16px;
+
+    &__answer {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

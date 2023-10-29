@@ -39,7 +39,7 @@ const LeftMenu = observer(() => {
             </span>{""}
             Мое обучение
           </Link>
-          <Link to={"/tests"} className={"nav-link d-flex align-items-center"}>
+          <Link to={`/department/${userStore?.user?.department_id}/tests`} className={"nav-link d-flex align-items-center"}>
             <span className={"d-flex align-items-center"}>
               <BsJournalCheck className={"me-2"} />
             </span>

@@ -14,19 +14,20 @@ export interface ITest {
 
 export interface ITestEdit {
   name: string;
-  questions: Array<ITestEditQuestion>
+  questions: Array<ITestEditQuestion>;
+  answer?: Array<ITestEditQuestion>;
 }
 
 export interface ITestEditQuestion {
   text: string;
   id: number;
   blob_id?: string;
+  score: number;
   answers: Array<ItestEditQuestionAnswer>;
 }
 
 export interface ItestEditQuestionAnswer {
   id: number;
   text: string;
-  score: number;
-  isCorrect: boolean;
+  is_correct: boolean;
 }

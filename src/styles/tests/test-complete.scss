@@ -1,3 +1,29 @@
+@import "../variables.scss";
+
 .test-complete {
   margin-top: 60px !important;
+
+  &--question {
+    position: relative;
+
+    span {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    border-radius: 8px;
+    border: 1px solid $border-color;
+    padding: 16px;
+    margin-top: 24px;
+  }
+
+  button {
+    margin-top: 24px;
+  }
 }

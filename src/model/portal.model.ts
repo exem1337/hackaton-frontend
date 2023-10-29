@@ -19,4 +19,11 @@ export interface IDepartmentTopic {
   department_id: number;
   id: number;
   name: string;
+  test: Array<IDepartmentTopicTest>;
+}
+
+export interface IDepartmentTopicTest {
+  id: number;
+  name: string;
+  topic_id: number;
 }

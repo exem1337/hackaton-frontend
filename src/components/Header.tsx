@@ -27,7 +27,14 @@ const Header = observer(() => {
 		<>
       <Navbar data-bs-theme="dark" className={'position-sticky top-0 z-2'}>
         <Container>
-          <Navbar.Brand href="#home">ПрофТестиум</Navbar.Brand>
+        <img
+              alt=""
+              src="images/ПТ.svg"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{' '}
+          <Navbar.Brand href="#home"><h2>ПрофТестиум</h2></Navbar.Brand>
           {
             ['', '/'].includes(pathname) &&
             <Nav className="me-auto">
@@ -35,6 +42,12 @@ const Header = observer(() => {
               <Nav.Link href="#features">Тарифы</Nav.Link>
               <Nav.Link href="#pricing">Внедрение</Nav.Link>
               <Nav.Link href="#feedback">Отзывы</Nav.Link>
+            </Nav>
+          }
+          {
+            userStore.isLogin &&
+            <Nav className="me-auto">
+              <Nav.Link href="/portal">Перейти к порталу</Nav.Link>
             </Nav>
           }
 
