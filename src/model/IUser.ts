@@ -45,6 +45,10 @@ export interface IUserTokenResponse {
    refresh: string;
 }
 
+export interface IPosition{
+   name: string,
+}
+
 export interface IUsers{
    id: number,
    first_name: string,
@@ -52,7 +56,7 @@ export interface IUsers{
    middle_name: string,
    avatar: string,
    email: string,
-   position: string,
+   position: IPosition,
    phone: string,
    status: string,
    rate: string

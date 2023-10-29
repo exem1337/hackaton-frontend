@@ -63,7 +63,9 @@ const ModalDbEmployees = (props: UserActive) => {
                   </Form.Select>
                </FloatingLabel>
                <FloatingLabel controlId="floatingPassword" label="Должность">
-                  <Form.Control value={user?.position} type="text" placeholder="Введите должность" onChange={(e)=>setUser({...user, ['position']: e.target.value})}/>
+                  <Form.Control value={user?.position?.name} type="text" placeholder="Введите должность" onChange={(e)=>setUser({...user, ['position']: {
+                        name: e.target.value
+                     }})}/>
                </FloatingLabel>
                <FloatingLabel controlId="floatingPassword" label="Ставка">
                   <Form.Control value={user?.rate} type="text" placeholder="Введите ставку" onChange={(e)=>setUser({...user, ['rate']: e.target.value})}/>

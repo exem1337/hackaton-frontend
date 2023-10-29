@@ -22,6 +22,7 @@ const DbEmployeePage = () => {
    const [users, setUsers] = useState<IUsers[]>([])
    async function getUsers() {
       const result = await EmployerService.getAllUSer();
+      console.log(result[0].position)
       setUsers(result);
    }
    useEffect(()=>{
@@ -87,7 +88,7 @@ const DbEmployeePage = () => {
                                     <p><span className={'me-2'}>Фамилия :</span><span>{db_?.last_name}</span></p>
                                     <p><span className={'me-2'}>Отчество :</span><span>{db_?.middle_name}</span></p>
                                     <p><span className={'me-2'}>Email :</span><span>{db_?.email}</span></p>
-                                    <p><span className={'me-2'}>Должность :</span><span>{db_?.position}</span></p>
+                                    <p><span className={'me-2'}>Должность :</span><span>{db_?.position?.name}</span></p>
                                     <p><span className={'me-2'}>Номер телефона :</span><span>{db_?.phone}</span></p>
                                     <p><span className={'me-2'}>Ставка :</span><span>{db_?.last_name}</span></p>
                                     <p><span className={'me-2'}>Статус сотрудника :</span><span>{db_?.last_name}</span></p>
