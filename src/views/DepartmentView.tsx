@@ -79,7 +79,7 @@ const DepartmentView = observer(() => {
       <div className="department-view--themes">
         <BaseWrapper title="Темы">
           <BaseWrapperSlot>
-            <Button onClick={() => setIsShowModal(true)}>Создать тему</Button>
+            { userStore?.isOperatingRole() && <Button onClick={() => setIsShowModal(true)}>Создать тему</Button> }
             {
               <ModalWindow show={isShowModal} onHide={() => onCloseModal()}>
                 <CreateThemeModal onHide={() => onCloseModal()} departmentId={department?.id} />

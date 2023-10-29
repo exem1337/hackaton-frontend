@@ -30,7 +30,7 @@ const App = () => {
       { path: '/', element: <LandingView /> },
       { path: '/auth', element: <AuthView /> },
       { path: '/profile', element: <Profile /> },
-      { path: '/tests', element: <TestsView /> },
+      { path: '/department/:id/tests', element: <TestsView /> },
       { path: '/tests/edit/:id', element: <TestEditView /> },
       { path: '/tests/:id', element: <TestCompleteView /> },
       { path: '/topics/:id/test-create', element: <TestEditView /> },

@@ -25,7 +25,7 @@ export class FileService {
     const file = await api.get(
       `/cdn/get/${salt}`,
       {
-        baseURL: 'http://animefeet.servebeer.com:5000',
+        baseURL: 'http://animefeet.servebeer.com:5001',
       }
     ).then((res) => res.data)
 
@@ -39,7 +39,7 @@ export class FileService {
     return await api.get(
       `/cdn/get/${salt}`,
       {
-        baseURL: 'http://animefeet.servebeer.com:5000',
+        baseURL: 'http://animefeet.servebeer.com:5001',
       }
     ).then((res) => res.data)
   }
@@ -57,7 +57,7 @@ export class FileService {
            headers: {
              'Content-Type': 'multipart/form-data',
            },
-           baseURL: 'http://animefeet.servebeer.com:5000',
+           baseURL: 'http://animefeet.servebeer.com:5001',
          }
       ).then((res) => res.data.salt)
 
@@ -72,7 +72,7 @@ export class FileService {
     const { key } = (await api.get(
       `/cdn/getBlobSalt/${blobId}`,
       {
-        baseURL: 'http://animefeet.servebeer.com:5000',
+        baseURL: 'http://animefeet.servebeer.com:5001',
       }
     ))?.data;
 

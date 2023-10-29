@@ -47,7 +47,7 @@ const TestCompleteView = () => {
                 <Form.Check
                   type="radio"
                   label={answer.text}
-                  checked={answer.id === getCheckedAnswerId(question?.id)}
+                  checked={answer.is_correct}
                   onClick={() => setAnswersCheck(question.id, answer.id)} 
                 />
               )
