@@ -5,10 +5,15 @@
 @import url(./styles/left-menu-nav-bar.scss);
 @import url(./styles/header.scss);
 @import url(./styles/footer.scss);
-@import url(./styles/tests-page.scss);
-@import url(./styles/test-page.scss);
+@import url(./styles/tests/test-page.scss);
 @import url(./styles/inputs.scss);
 @import url(./styles/landing-view.scss);
+@import url(./styles/conversion-page.scss);
+@import url(./styles/tests/test-complete.scss);
+@import url(./styles/department-view.scss);
+@import url(./styles/components/user-wrapper.scss);
+@import url(./styles/components/file-download.scss);
+@import url(./styles/portal.scss);
 @import "./styles/variables.scss";
 
 body {
@@ -17,23 +22,28 @@ body {
 }
 
 .color-primary {
-  color: $primary;
+  color: $primary !important;
 }
 
 .bg-primary {
-  background-color: $primary;
+  background-color: $primary !important;
 }
 
 .bg-secondary {
-  background-color: $disabled;
+  background-color: $disabled !important;
 }
 
 .color-accent {
-  color: $accent;
+  color: $accent !important;
 }
 
 .color-black {
-  color: $text-black;
+  color: $text-black !important;
+}
+
+.bg-accent {
+  background-color: $accent !important;
+  color: $main-bg !important;
 }
 
 .app-container {
@@ -60,6 +70,10 @@ body {
   border-radius: 8px;
   transition: .3s ease;
   border: none !important;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: $accent;
@@ -68,6 +82,10 @@ body {
   &:disabled {
     background-color: $disabled;
     pointer-events: none;
+  }
+
+  &:focus {
+    background-color: $primary;
   }
 }
 
@@ -85,6 +103,51 @@ body {
 
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  &-small-title {
+    font-size: 20px !important;
+  }
+}
+
+.action-button {
+  color: $primary;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: .3s ease;
+  font-weight: 500;
+
+  &:hover {
+    color: $accent;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    color: $disabled;
+  }
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  &.accent {
+    color: $accent;
+  }
+}
+
+.row-list {
+  display: flex;
+  > p {
+    color: $additional-text-color;
+    margin-right: 20px;
+    font-weight: 600;
+
+    > span {
+      color: $text-black;
+      font-weight: 400;
     }
   }
 }

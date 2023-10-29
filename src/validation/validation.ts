@@ -1,7 +1,6 @@
 export class Validation {
    static validateFormLogIn = (form: {email: string, password: string})=>{
       const {email, password} = form
-      console.log(email)
       const formErrors: Record<string, string> = {}
       const stateErr: Record<string, boolean>  = {}
       const validateEmail = this.isValidEmail(email);
@@ -31,6 +30,6 @@ export class Validation {
    private static isValidatePassword(password: string) {
       if(!password || password === '') return "Пожалуйста укажите свой пароль"
       else if(password.length > 20) return "Слишком длинный пароль максимальная длина 20 символов"
-      else if(password.length < 6) return "Слишком ороткий пароль минимальная длина 6 символов"
+      else if(password.length < 3) return "Слишком короткий пароль минимальная длина 6 символов"
    }
 }

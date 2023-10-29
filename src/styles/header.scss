@@ -4,12 +4,33 @@
   background-color: $bg-darken;
   color: $text-black !important;
   border-bottom: 1px solid $border-color;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  
 
   a {
     color: $text-black;
 
     &:hover {
       color: $primary;
+    }
+  }
+
+  .auth-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    img {
+      height: 25px;
+      width: 25px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    span {
+      cursor: pointer;
     }
   }
 }

@@ -1,0 +1,48 @@
+@import "../styles/variables.scss";
+
+.department-view {
+  margin-top: 60px !important;
+  margin-bottom: 60px !important;
+
+  .user-wrapper {
+    margin-top: 32px;
+  }
+
+  &--themes {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin-top: 60px;
+
+    &__theme {
+      margin-top: 32px;
+      position: relative;
+
+      &--actions {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .base-wrapper-small-title {
+        margin-bottom: 0;
+      }
+
+      &--inner {
+        background-color: $bg-darken;
+        padding: 16px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-left: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+}

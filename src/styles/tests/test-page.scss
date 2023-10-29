@@ -1,0 +1,24 @@
+@import "../variables";
+
+.tests-page{
+  width: 100%;
+  margin-top: 60px !important;
+  margin-bottom: 60px !important;
+
+  &--inner {
+    &-img{
+      max-height: 150px;
+    }
+
+    &__title {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.test-page-well-info {
+  > span {
+    margin-right: 18px;
+    color: $additional-text-color;
+  }
+}

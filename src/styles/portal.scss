@@ -1,0 +1,55 @@
+@import "../styles/variables.scss";
+.admin-page--container{
+  margin-top: 60px !important;
+  margin-bottom: 60px !important;
+  .base-wrapper{
+    position: relative;
+    >.portal--button{
+      height: 100%
+    }
+  }
+}
+.portal--card{
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+  background-color: $bg-darken !important;
+}
+
+.portal--button__center{
+  display: flex;
+  align-items: center;
+}
+
+.portal--container{
+  margin-top: 32px;
+  margin-bottom: 8px;
+  .base-wrapper{
+    position: relative;
+    >.portal--button{
+      height: 100%;
+    }
+    > h1 {
+      margin-bottom: 0 !important;
+    }
+  }
+}
+
+.portal {
+  margin-top: 60px !important;
+  margin-bottom: 60px !important;
+
+  &--departments {
+    margin-top: 24px;
+
+    &__department {
+      margin-top: 24px;
+      background-color: $bg-darken;
+      padding: 16px;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+}

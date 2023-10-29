@@ -14,8 +14,9 @@ import { TbReportAnalytics } from "react-icons/tb";
 import { PiNotepadBold } from "react-icons/pi";
 import { DISABLED_LEFT_MENU_LOCATIONS } from "../constants/disabledLeftMenuLocations.const";
 import userStore from '../store/User';
+import { observer } from "mobx-react-lite";
 
-const LeftMenu = () => {
+const LeftMenu = observer(() => {
   const { pathname } = useLocation();
 
   if (DISABLED_LEFT_MENU_LOCATIONS.includes(pathname) || !userStore.isLogin) {
@@ -26,19 +27,19 @@ const LeftMenu = () => {
     <Nav className="px-3 left-menu-nav-bar">
       <Container className={"d-flex flex-column left-menu-container"}>
         <Nav className="mb-auto d-flex flex-column">
-          <Link to={""} className={"nav-link d-flex align-items-center"}>
+          <Link to={"/portal"} className={"nav-link d-flex align-items-center"}>
             <span className={"d-flex align-items-center"}>
               <BsFillBuildingFill className={"me-2"} />
             </span>
             Наша компания
           </Link>
-          <Link to={""} className={"nav-link d-flex align-items-center"}>
+          <Link to={`/department/${userStore?.user?.department_id}`} className={"nav-link d-flex align-items-center"}>
             <span className={"d-flex align-items-center"}>
               <GiBlackBook className={"me-2"} />
-            </span>{" "}
+            </span>{""}
             Мое обучение
           </Link>
-          <Link to={"/test"} className={"nav-link d-flex align-items-center"}>
+          <Link to={"/tests"} className={"nav-link d-flex align-items-center"}>
             <span className={"d-flex align-items-center"}>
               <BsJournalCheck className={"me-2"} />
             </span>
@@ -50,12 +51,15 @@ const LeftMenu = () => {
             </span>
             Мои результаты
           </Link>
-          <Link to={""} className={"nav-link d-flex align-items-center"}>
-            <span className={"d-flex align-items-center"}>
-              <PiNotepadBold className={"me-2"} />
-            </span>
-            Мои обращения{" "}
-          </Link>
+          { !userStore.isOperatingRole() &&
+            <Link to={"/conversions"} className={"nav-link d-flex align-items-center"}>
+              <span className={"d-flex align-items-center"}>
+                <PiNotepadBold className={"me-2"} />
+              </span>
+              Мои обращения{" "}
+            </Link>
+          }
+
           {  (userStore.isAdmin || userStore.isPortalAdmin || userStore.isHrManager) && <>
             <Link to={""} className={"nav-link d-flex align-items-center"}>
               <span className={"d-flex align-items-center"}>
@@ -101,6 +105,6 @@ const LeftMenu = () => {
       </Container>
     </Nav>
   );
-};
+});
 
 export default LeftMenu;
