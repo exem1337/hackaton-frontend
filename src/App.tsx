@@ -20,6 +20,8 @@ import AuthService from './service/AuthService';
 import SignupView from './views/SignupView';
 import TestEditView from './views/TestsEditView';
 import DbEmployeePage from "./views/db-employee-page/DbEmployeePage";
+import MyApplications from "./views/my-applications-page/MyApplications";
+import PageNotFound from "./views/PageNotFound";
 
 const App = () => {
    useEffect(() => {
@@ -40,6 +42,9 @@ const App = () => {
       { path: '/admin', element: <AdminPage /> },
       { path: '/signup', element: <SignupView /> },
       { path: '/employee', element: <DbEmployeePage /> },
+      {path: '/employee', element: <DbEmployeePage/>},
+      {path: '/my_applications', element: <MyApplications/>},
+      {path: '/*', element: <PageNotFound/>},
    ])
    return routes;
 }
@@ -50,7 +55,7 @@ const AppWrapper = () => {
          <div className='d-flex flex-column min-vh-100'>
          <Header />
             <div className='flex-grow-1'>
-               
+
                <div className="app-wrapper ">
                   <LeftMenu />
                   <App />
