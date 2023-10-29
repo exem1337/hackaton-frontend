@@ -7,12 +7,16 @@ import { IDepartmentTopicTest } from "../../model/portal.model";
 interface ITestPageItemProps {
   key: number;
   test: Partial<IDepartmentTopicTest>;
+  buttonText?: string;
+  handler?: (id: number)=>void;
 }
 
-const TestPageItem = ({ key, test }: ITestPageItemProps) => {
+const TestPageItem = ({ key, test, buttonText, handler }: ITestPageItemProps) => {
   const navigate = useNavigate();
 
   const onGoToTest = (id: number): void => {
+    if(handler)
+    return handler(id);
     navigate(`/tests/${id}`);
   }
 
@@ -28,7 +32,7 @@ const TestPageItem = ({ key, test }: ITestPageItemProps) => {
             <span>Статус: Активный</span>
           </div>
         </Card.Text>
-        <Button variant="primary" onClick={() => onGoToTest(test.id)}>Пройти тестирование</Button>
+        <Button variant="primary" onClick={() => onGoToTest(test.id)}>{buttonText ?? 'Пройти тестирование'}</Button>
       </Card.Body>
     </Card>
   );
