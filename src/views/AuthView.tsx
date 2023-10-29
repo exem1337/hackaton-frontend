@@ -33,7 +33,12 @@ const AuthView = () => {
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
     } else {
-      await AuthService.login(form.email, form.password);
+      const success = await AuthService.login(form.email, form.password);
+
+      if (!success) {
+        return;
+      }
+
       navigate('/');
     }
     setStateErrors(stateErr);
