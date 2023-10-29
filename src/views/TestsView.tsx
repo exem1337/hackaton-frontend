@@ -6,7 +6,7 @@ import { MdModeEdit } from "react-icons/md";
 import userStore from '../store/User'
 import { observer } from "mobx-react-lite";
 import { useNavigate, useParams } from "react-router-dom";
-import { IDepartmentTopic, IPortalDepartment } from "../model/portal.model";
+import { IDepartmentTopic } from "../model/portal.model";
 import api from "../http";
 
 const TestsView = observer(() => {

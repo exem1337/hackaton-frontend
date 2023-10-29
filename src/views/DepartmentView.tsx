@@ -70,11 +70,12 @@ const DepartmentView = observer(() => {
   return (
     <div className="app-container department-view">
       <h1>Мое обучение</h1>
-      <UserWrapper name={''} last_name={''} positions='HR-менеджер'>
+      { !userStore.isOperatingRole() && <UserWrapper name={'Елена'} last_name={'Суховей'} positions='HR-менеджер'>
         <UserWrapperSlot>
           <Button>Создать обращение</Button>
         </UserWrapperSlot>
       </UserWrapper>
+      }
 
       <div className="department-view--themes">
         <BaseWrapper title="Темы">

@@ -7,12 +7,15 @@ import ModalWindow from "../../myModal/ModalWindow";
 import ModalApplications from "./ModalApplications";
 import ActionButton, {ActionButtonSlot} from "../../components/ActionButton";
 import {IoAdd} from "react-icons/io5";
+import userStore from '../../store/User';
+import { observer } from 'mobx-react-lite';
 
-const MyApplications = () => {
+const MyApplications = observer(() => {
    const [myAppeals, setMyAppeals] = useState<IAppeals[]>([])
    const [modalShow, setModalShow] = useState(false);
    const [statusAdd, setStatusAdd] = useState(false)
    const [activeAppeals, setActiveAppeals] = useState<number>(null)
+   
    async function getMyAppeals(){
       const response = await AppealsService.getMyAppeals();
       setMyAppeals(response);
@@ -29,11 +32,10 @@ const MyApplications = () => {
       getMyAppeals();
    }, [])
    return (
-
       <div className={"tests-page app-container"}>
          <div className="tests-page--inner">
             <div className={'d-flex justify-content-end'}>
-               <ActionButton
+               { !userStore?.isOperatingRole() && <ActionButton
                   text="Создать обращение"
                   handler={() => {
                      setModalShow(true);
@@ -44,9 +46,12 @@ const MyApplications = () => {
                      <IoAdd />
                   </ActionButtonSlot>
                </ActionButton>
+               }
             </div>
 
             <h1 className="tests-page--inner__title">Обращения</h1>
+            { !myAppeals.length && <p>Обращений нет</p> }
+
             {myAppeals.map((theme, key) => (
                <Card key={key} className={"test-page mb-4"}>
                   <Card.Body>
@@ -88,6 +93,6 @@ const MyApplications = () => {
          </ModalWindow>
       </div>
    );
-};
+});
 
 export default MyApplications;

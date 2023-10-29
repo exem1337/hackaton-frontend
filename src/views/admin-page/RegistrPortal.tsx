@@ -26,26 +26,23 @@ const RegistrPortal = () => {
                <Form.Control
                   value={form.title}
                   as="textarea"
-                  placeholder="Leave a comment here"
                   onChange={(e)=>setForm({...form ,['title']: e.target.value})}
                />
             </FloatingLabel>
             <FloatingLabel
                controlId="floatingTextarea"
-               label="Имя"
+               label="Электронная почта администратора портала"
                className="mb-3"
             >
                <Form.Control
                   value={form.nameHR}
                   as="textarea"
-                  placeholder="Leave a comment here"
                   onChange={(e)=>setForm({...form ,['nameHR']: e.target.value})}
                />
             </FloatingLabel>
             <FloatingLabel controlId="floatingTextarea2" label="Описание">
                <Form.Control
                   as="textarea"
-                  placeholder="Leave a comment here"
                   style={{height: '100px'}}
                   value={form.name}
                   onChange={(e)=>setForm({...form ,['name']: e.target.value})}
@@ -53,7 +50,7 @@ const RegistrPortal = () => {
             </FloatingLabel>
          </Modal.Body>
          <Modal.Footer>
-            <Button onClick={() => onHandel()}>Сохранить</Button>
+            <Button onClick={() => onHandel()}>Создать</Button>
          </Modal.Footer>
       </div>
    );
