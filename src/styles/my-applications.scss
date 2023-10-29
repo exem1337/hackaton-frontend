@@ -1,0 +1,16 @@
+@import "../styles/variables.scss";
+.my-applications--time-bloc{
+  &__top, &__bottom{
+    position: absolute;
+    right: 5px;
+    color: $additional-text-color;
+    font-size: 12px;
+    font-weight: 300;
+  }
+  &__top{
+    top: 0
+  }
+  &__bottom{
+    bottom: 0
+  }
+}

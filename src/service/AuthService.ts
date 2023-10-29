@@ -47,4 +47,6 @@ export default class AuthService {
          userStore.setUser(await this.getUserInfoById(id));
       }
    }
+
+
 }

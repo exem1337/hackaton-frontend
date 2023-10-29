@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {AuthResponse} from "../model/response/AuthResponse";
-
-
+import Cookies from 'js-cookie'
 export const API_URL = process.env.REACT_APP_API_URL;
 const $api = axios.create({
    withCredentials: true,
@@ -9,7 +8,8 @@ const $api = axios.create({
 })
 
 $api.interceptors.request.use((config) => {
-   config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+   const token = Cookies.get('token');
+   config.headers.Authorization = `Bearer ${token}`;
    return config;
 })
 
