@@ -45,7 +45,7 @@ const LeftMenu = observer(() => {
             </span>
             Мои тесты
           </Link>
-          <Link to={""} className={"nav-link d-flex align-items-center"}>
+          <Link to={"/my_result"} className={"nav-link d-flex align-items-center"}>
             <span className={"d-flex align-items-center"}>
               <BsClipboardCheckFill className={"me-2"} />
             </span>

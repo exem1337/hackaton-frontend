@@ -22,6 +22,7 @@ import TestEditView from './views/TestsEditView';
 import DbEmployeePage from "./views/db-employee-page/DbEmployeePage";
 import MyApplications from "./views/my-applications-page/MyApplications";
 import PageNotFound from "./views/PageNotFound";
+import MyResult from "./views/MyResult";
 
 const App = () => {
    useEffect(() => {
@@ -44,6 +45,7 @@ const App = () => {
       { path: '/employee', element: <DbEmployeePage /> },
       {path: '/employee', element: <DbEmployeePage/>},
       {path: '/my_applications', element: <MyApplications/>},
+      {path: '/my_result', element: <MyResult/>},
       {path: '/*', element: <PageNotFound/>},
    ])
    return routes;
