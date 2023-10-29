@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import TestPageItem from "../components/tests/TestsPageItem";
 import BaseWrapper, { BaseWrapperSlot } from "../components/BaseWrapper";
-import ActionButton, { ActionButtonSlot } from "../components/ActionButton";
-import { MdModeEdit } from "react-icons/md";
 import userStore from '../store/User'
 import { observer } from "mobx-react-lite";
 import { useNavigate, useParams } from "react-router-dom";
-import { IDepartmentTopic, IPortalDepartment } from "../model/portal.model";
+import { IDepartmentTopic } from "../model/portal.model";
 import api from "../http";
 
 const TestBaseView = observer(() => {

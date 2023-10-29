@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import UserWrapper, { UserWrapperSlot } from '../components/UserWrapper'
-import { Button } from 'react-bootstrap'
 import BaseWrapper, { BaseWrapperSlot } from '../components/BaseWrapper'
 import BaseFileDownload from '../components/BaseFileDownload'
-import { AiOutlineArrowRight, AiFillDelete } from 'react-icons/ai';
 import { useNavigate, useParams } from 'react-router-dom'
-import ActionButton, { ActionButtonSlot } from '../components/ActionButton'
 import { useAuthGuard } from '../hooks/useAuthGuard'
-import { IDepartmentTopic, IPortalDepartment } from '../model/portal.model'
+import { IDepartmentTopic } from '../model/portal.model'
 import api from '../http'
 import { observer } from 'mobx-react-lite'
 

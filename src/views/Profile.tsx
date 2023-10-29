@@ -4,7 +4,6 @@ import store from '../store/User';
 import { observer } from 'mobx-react-lite';
 import { useAuthGuard } from '../hooks/useAuthGuard';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import ActionButton, { ActionButtonSlot } from '../components/ActionButton';
 import { MdModeEdit } from 'react-icons/md';
 import ModalDbEmployees from './db-employee-page/ModalDbEmployees';

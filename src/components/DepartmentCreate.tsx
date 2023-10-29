@@ -1,5 +1,4 @@
 import { Button, FloatingLabel, Form } from "react-bootstrap";
-import api from '../http'
 import { useState } from "react";
 
 interface IDepartmentCreateProps {

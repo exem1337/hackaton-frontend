@@ -6,11 +6,6 @@ import vr from './vr.svg';
 import teacher from './teacher.svg';
 import engine from './engine.svg';
 
-// import Feedback1 from "../../public/images/feedback1.jpg";
-// import Feedback2 from "../../public/images/feedback2.jpg";
-// import Feedback3 from "../../public/images/feedback3.jpg";
-
-
 const LandingView = () => {
   return (
     <div className="container" id="home">

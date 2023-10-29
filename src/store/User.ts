@@ -15,7 +15,7 @@ export default new class User {
       return this.user?.roles?.includes(EUserRole.Admin);
    }
 
-   get isPortalAdmin(): boolean {
+   isPortalAdmin(): boolean {
       return this.user?.roles?.includes(EUserRole.PortalAdmin);
    }
 

@@ -2,17 +2,11 @@ import React from "react";
 import BaseWrapper, { BaseWrapperSlot } from "../../components/BaseWrapper";
 import { ListGroup } from "react-bootstrap";
 import ActionButton, { ActionButtonSlot } from "../../components/ActionButton";
-import { IoAdd } from "react-icons/io5";
-import { Navigate, useNavigate } from "react-router-dom";
-import { AiFillDelete, AiOutlineArrowRight } from "react-icons/ai";
-import { MdModeEdit } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const Portal = ({ key, id, title, nameHR, name }) => {
   const navigate = useNavigate();
-
-  function onEditPortal(id) {}
-
-  function onDeletePortal(id) {}
 
   return (
     <div key={key} className={"w-100 mb-4 border-1 portal--container"}>

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Col, Image, Modal } from "react-bootstrap";
+import { Col, Image } from "react-bootstrap";
 import BaseWrapper, { BaseWrapperSlot } from "../../components/BaseWrapper";
 import ActionButton, { ActionButtonSlot } from "../../components/ActionButton";
 import { MdModeEdit } from "react-icons/md";
-import { GrFormClose } from "react-icons/gr";
 import { AiOutlineClose } from "react-icons/ai";
-import RegistrPortal from "../admin-page/RegistrPortal";
 import ModalWindow from "../../myModal/ModalWindow";
 import ModalDbEmployees from "./ModalDbEmployees";
 import EmployerService from "../../service/EmployerService";
@@ -61,8 +59,8 @@ const DbEmployeePage = () => {
 
   async function onHandelSaveUsersEdit(user) {
     await EmployerService.pathUser(user);
-    // await getUsers();
-    // activeUserRestart();
+    await getUsers();
+    activeUserRestart();
   }
 
   return (

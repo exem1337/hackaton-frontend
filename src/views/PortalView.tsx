@@ -4,11 +4,11 @@ import { observer } from "mobx-react-lite";
 import React, { useEffect, useState } from "react";
 import BaseWrapper, { BaseWrapperSlot } from "../components/BaseWrapper";
 import { IPortal } from "../model/portal.model";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { Button, Col, Form, ListGroup, Row, Tab } from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
+import { Button, Form, ListGroup, Row, Tab } from "react-bootstrap";
 import ActionButton, { ActionButtonSlot } from "../components/ActionButton";
 import { IoAdd } from "react-icons/io5";
-import { AiFillDelete, AiOutlineArrowRight } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 import { BsPencilFill } from "react-icons/bs";
 
 const PortalView = observer(() => {
@@ -47,13 +47,14 @@ const PortalView = observer(() => {
     <div className="app-container portal">
       <BaseWrapper title={`Портал - ${portal?.name}`}>
         <BaseWrapperSlot>
-          <ActionButton className="portal-delete" text="Удалить портал" handler={() => onDeletePortal()}>
-            <ActionButtonSlot>
-              <AiFillDelete />
-            </ActionButtonSlot>
-          </ActionButton>
+          { userStore?.isAdmin() && <ActionButton className="portal-delete" text="Удалить портал" handler={() => onDeletePortal()}>
+              <ActionButtonSlot>
+                <AiFillDelete />
+              </ActionButtonSlot>
+            </ActionButton>
+          }
 
-          {userStore.isAdmin() && (
+          {userStore.isAdmin() || userStore.isPortalAdmin() && (
             <div className="portal-edit">
               <Form.Label htmlFor="name">Название портала</Form.Label>
               <Form.Control type="text" id="name" value={portal?.name} />
