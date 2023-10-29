@@ -64,6 +64,8 @@ const PortalView = observer(() => {
               <Form.Label htmlFor="file">Иконка портала</Form.Label>
               <Form.Control title="Выберите файл" id="file" type="file" />
 
+              <span>Администратор портала: Валерия Тимченко</span>
+
               <Form.Label htmlFor="exampleColorInput">
                 Выбрать цвет портала
               </Form.Label>
