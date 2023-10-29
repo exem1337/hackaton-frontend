@@ -9,7 +9,7 @@ interface IConfirmModal {
 }
 const ConfirmModal = (props: IConfirmModal) => {
    return (
-      <Modal.Dialog>
+      <div>
          <Modal.Header closeButton>
             <Modal.Title>{props.header}</Modal.Title>
          </Modal.Header>
@@ -21,7 +21,7 @@ const ConfirmModal = (props: IConfirmModal) => {
             <Button variant="secondary" onClick={props.onHide}>Нет</Button>
             <Button variant="primary" onClick={props.onHandel}>Да</Button>
          </Modal.Footer>
-      </Modal.Dialog>
+      </div>
    );
 };
 
