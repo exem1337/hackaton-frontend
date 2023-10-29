@@ -46,11 +46,11 @@ const App = () => {
 const AppWrapper = () => {
    return (
       <Router>
-         <div>
+         <div className='d-flex flex-column min-vh-100'>
          <Header />
-            <div className='d-flex justify-content-center'>
+            <div className='flex-grow-1'>
                
-               <div className="app-wrapper">
+               <div className="app-wrapper ">
                   <LeftMenu />
                   <App />
                </div>
