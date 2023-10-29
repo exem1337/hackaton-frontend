@@ -14,34 +14,41 @@
     flex-wrap: wrap;
 }
 
-.card{
-  display: block;
-  margin: 1em;
-  height: 20rem;
-  width: 18rem;
+ .card{
+//   display: block;
+//   margin: 1em;
+//   height: 20rem;
+//   width: fit-content;
+//   border: none;    
+//   border-radius:  10%;
+  box-shadow: 5px 5px 5px lightgrey;
 }
 
-.cardst{
-    display: inline-block;
-    margin: 1em;
-    height: 20rem;
-    width: 18rem;
-    position: relative;
+// .cardst{
+//     display: inline-block;
+//     margin: 1em;
+//     height: 20rem;
+//     width: 18rem;
+//     position: relative;
     
-  }
+//   }
 
 .card-body{
-    position: relative;
-    height: 20rem;
-    width: 18rem;
-    background-color: #ffe2ac;
+    background-color: #F8F7FF;
+
+
+}
+
+
+
+.card-bg{
+    background-color: #F8F7FF;
 }
 
 .card--btn
 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    margin: 0 auto;
+    display: block;
 }
 
 .introduction{
@@ -63,7 +70,8 @@
 
 .image--cardst{
     position: relative;
-    right: -1rem;
+    float: right;
+    margin: 2px 15px 2px 2px;
     width: 8em;
     height: 8em;
 }
@@ -75,4 +83,18 @@
 
 .introduction p{
     color:white;
+    font-size: 20px;
+}
+
+.introduction hr{
+    color:white;
+}
+
+.landing--block h1{
+    color: #F06431;
+}
+
+.carousel{
+    // height: 400px;
+    background-color: lightgray;
 }
