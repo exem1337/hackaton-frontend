@@ -39,6 +39,7 @@ export default new class User {
    setUser(user: IUser): void {
       this.user = user;
       this.isLogin = true;
+      console.log(user)
    }
 
    setMessages(message: string): void {

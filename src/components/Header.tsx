@@ -8,6 +8,7 @@ import { Button } from 'react-bootstrap';
 import AuthService from '../service/AuthService';
 import { observer } from 'mobx-react-lite';
 import { DISABLED_LOGIN_BUTTON_LOCATIONS } from '../constants/disabledLoginButtonLocations.const';
+import {BiSolidExit} from "react-icons/bi";
 
 const Header = observer(() => {
   const navigate = useNavigate();
@@ -24,10 +25,10 @@ const Header = observer(() => {
 
   return(
 		<>
-      <Navbar data-bs-theme="dark">
+      <Navbar data-bs-theme="dark" className={'position-sticky top-0 z-2'}>
         <Container>
           <Navbar.Brand href="#home">ПрофТестиум</Navbar.Brand>
-          { 
+          {
             ['', '/'].includes(pathname) &&
             <Nav className="me-auto">
               <Nav.Link href="#opportunity">Возможности</Nav.Link>

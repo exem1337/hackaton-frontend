@@ -1,0 +1,28 @@
+.db-employee-page{
+  margin-top: 60px !important;
+  margin-bottom: 60px !important;
+  &--photo{
+    max-width: 200px;
+  }
+  &--bloc-info{
+    >p{
+      margin: 4px 0;
+    }
+  }
+  &--list{
+    margin-top: 32px!important;
+    margin-bottom: 8px!important;
+    .base-wrapper{
+      position: relative;
+      > h1{
+        margin-bottom: 0 !important;
+      }
+      >.portal--button{
+        height: 100%
+      }
+      .department-view--themes__theme--inner{
+
+      }
+    }
+  }
+}

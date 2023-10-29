@@ -79,7 +79,7 @@ const LeftMenu = observer(() => {
               </span>
               База тестов
             </Link>
-            <Link to={""} className={"nav-link d-flex align-items-center"}>
+            <Link to={"/employee"} className={"nav-link d-flex align-items-center"}>
               <span className={"d-flex align-items-center"}>
                 <BsDatabase className={"me-2"} />
               </span>
