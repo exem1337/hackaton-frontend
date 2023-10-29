@@ -2,13 +2,11 @@
 
 footer{
   background-color: $bg-darken;
-  padding: 3rem 0;
   position: relative;
   z-index: 3;
   bottom: 0;
   width: 100%;
-
-
+  margin-top: 120px;
   
   p > a{
     text-decoration: none;
@@ -20,6 +18,10 @@ footer{
   
   textarea{
     color: $main-bg;
+  }
+
+  .container.text-center.text-md-start.mt-5 {
+
   }
 }
 

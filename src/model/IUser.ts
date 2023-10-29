@@ -3,7 +3,7 @@ import {IPosition} from "./IDirectory";
 
 export interface IUser{
    email: string;
-   id: string;
+   id: number;
    first_name: string;
    last_name: string;
    middle_name: string;

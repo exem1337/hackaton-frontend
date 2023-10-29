@@ -1,13 +1,11 @@
 import $api from "../http";
-import {AuthResponse} from "../model/response/AuthResponse";
-import userStore from "../store/User";
-import {FileService} from "./File.service";
-import {IUsers} from "../model/IUser";
+import { FileService } from "./File.service";
+import { IUsers } from "../model/IUser";
 
 export default class EmployerService {
    static async getAllUSer(): Promise<Array<IUsers>> {
       try {
-         let userCredentials = (await $api.get('/users/all', )).data;
+         let userCredentials = (await $api.get('/users/all',)).data;
          userCredentials = await Promise.all(userCredentials.map(async (value) => ({
             ...value, avatar: value.avatar_salt ? await FileService.getFileBase64(value.avatar_salt) : ''
          })));
@@ -21,7 +19,7 @@ export default class EmployerService {
    static async getOneUSer(id: number): Promise<IUsers> {
       try {
          let userCredentials = (await $api.get(`/users/one/${id}`,)).data;
-         userCredentials = {...userCredentials, avatar: userCredentials.avatar_salt ? await FileService.getFileBase64(userCredentials.avatar_salt) : ''}
+         userCredentials = { ...userCredentials, avatar: userCredentials.avatar_salt ? await FileService.getFileBase64(userCredentials.avatar_salt) : '' }
          return userCredentials
       } catch (error) {
          console.log(error)
@@ -30,8 +28,8 @@ export default class EmployerService {
 
    static async pathUser(user: IUsers): Promise<void> {
       try {
-         let userCredentials = await $api.patch(`/users/${user.id}`, user);
-         console.log(userCredentials)
+         delete user.avatar;
+         return await $api.patch(`/users/${user.id}`, user);
       } catch (error) {
          console.log(error)
       }

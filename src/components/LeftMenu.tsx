@@ -96,7 +96,7 @@ const LeftMenu = observer(() => {
         </Nav>
         { userStore.isAdmin && 
           <Nav className={"mt-auto"}>
-            <Link to={""} className={"nav-link d-flex align-items-center"}>
+            <Link to={"/admin"} className={"nav-link d-flex align-items-center"}>
               <AiFillSetting className={"me-2"} />
               Настройки
             </Link>

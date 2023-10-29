@@ -8,7 +8,6 @@ import { Button } from 'react-bootstrap';
 import AuthService from '../service/AuthService';
 import { observer } from 'mobx-react-lite';
 import { DISABLED_LOGIN_BUTTON_LOCATIONS } from '../constants/disabledLoginButtonLocations.const';
-import {BiSolidExit} from "react-icons/bi";
 
 const Header = observer(() => {
   const navigate = useNavigate();

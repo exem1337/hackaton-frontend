@@ -1,18 +1,52 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import BaseWrapper, { BaseWrapperSlot } from '../components/BaseWrapper';
 import store from '../store/User';
 import { observer } from 'mobx-react-lite';
 import { useAuthGuard } from '../hooks/useAuthGuard';
 import { useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import ActionButton, { ActionButtonSlot } from '../components/ActionButton';
+import { MdModeEdit } from 'react-icons/md';
+import ModalDbEmployees from './db-employee-page/ModalDbEmployees';
+import EmployerService from '../service/EmployerService';
+import ModalWindow from '../myModal/ModalWindow';
+import AuthService from '../service/AuthService';
 
 const Profile = observer(() => {
   useAuthGuard(useNavigate());
+  const [showModal, setShowModal] = useState(false);
+
+  const onEdit = () => {
+    setShowModal(true);
+  }
+
+  const onHandelSaveUsersEdit = async (user) => {
+    await EmployerService.pathUser(user);
+    setShowModal(false);
+  }
+
+  const onSaveEdit = async () => {
+    setShowModal(false);
+    await AuthService.refresh()
+  }
 
   return (
     <div className="app-container">
       <div className="profile">
         { store.user.avatar ? <img src={`data:image/png;base64,${store.user.avatar as unknown as string}`} /> : <div className="profile--avatar"></div> }
-
+        <ActionButton text='Редактировать информацию' handler={onEdit}>
+          <ActionButtonSlot>
+            <MdModeEdit />
+          </ActionButtonSlot>
+        </ActionButton>
+        { showModal && 
+          <ModalWindow
+            show={showModal}
+            onHide={() => setShowModal(false)}
+          >
+            <ModalDbEmployees onHandelSaveUsersEdit={onHandelSaveUsersEdit} activeUserRestart={onSaveEdit} id={store.user?.id}/> 
+          </ModalWindow>
+        }
         <div className="profile--inner">
           <BaseWrapper title="Информация о пользователе">
             <BaseWrapperSlot>

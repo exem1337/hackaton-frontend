@@ -1,19 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {Button, FloatingLabel, Form, Modal} from "react-bootstrap";
 import {IUsers} from "../../model/IUser";
-import {USERS_STATUS_NAME_MAP} from "../../constants/usersStatusNameMap.const";
-import {StatusEmployeeEnum} from "../../enums/statusEmployee.enum";
 import EmployerService from "../../service/EmployerService";
 import {FileService} from "../../service/File.service";
 import {IPosition} from "../../model/IDirectory";
 
 interface UserActive {
    id: number,
-   activeUserRestart: () => void
+   activeUserRestart?: () => void
    onHandelSaveUsersEdit: (users: IUsers)=>void
 }
-
-
 
 const ModalDbEmployees = (props: UserActive) => {
 
@@ -27,9 +23,6 @@ const ModalDbEmployees = (props: UserActive) => {
    useEffect(()=>{
       getOneUser()
    }, [])
-
-
-
 
    function onEditFile(e) {
       const file = [(e.target as HTMLInputElement).files[0]]
