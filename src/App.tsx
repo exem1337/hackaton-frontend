@@ -12,7 +12,6 @@ import Profile from './views/Profile';
 import LeftMenu from "./components/LeftMenu";
 import TestsView from './views/TestsView';
 import TestCompleteView from './views/TestCompleteView';
-import Conversions from "./views/page-left-menu/conversions-page/conversions";
 import PortalView from './views/PortalView';
 import DepartmentView from './views/DepartmentView';
 import AdminPage from "./views/admin-page/AdminPage";
@@ -42,7 +41,6 @@ const App = () => {
       { path: '/portal', element: <PortalView /> },
       { path: '/portal/:id', element: <PortalView /> },
       { path: '/department/:id', element: <DepartmentView /> },
-      { path: '/conversions', element: <Conversions /> },
       { path: '/admin', element: <AdminPage /> },
       { path: '/signup', element: <SignupView /> },
       { path: '/employee', element: <DbEmployeePage /> },

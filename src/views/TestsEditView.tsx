@@ -5,11 +5,13 @@ import ActionButton, { ActionButtonSlot } from "../components/ActionButton"
 import { AiFillDelete } from "react-icons/ai";
 import api from '../http'
 import BaseWrapper, { BaseWrapperSlot } from "../components/BaseWrapper";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+import store from '../store/User'
 
-const TestEditView = () => {
+const TestEditView = observer(() => {
   const params = useParams();
-
+  const navigate = useNavigate();
   const [test, setTest] = useState<ITestEdit>({
     name: '',
     questions: [],
@@ -106,13 +108,17 @@ const TestEditView = () => {
   }
 
   const onSave = async () => {
-    await api.post('/tests/submitTest', {
-      ...test,
-      topic_id: Number(params.id),
-    })
+    try {
+      await api.post('/tests/submitTest', {
+        ...test,
+        topic_id: Number(params.id),
+      })
+      navigate(`/department/${store?.user?.department_id}/tests`);
+    }
+    catch (error) {
+      console.error(error);
+    }
   }
-
-
 
   const getTestQuestions = async () => {
     try {
@@ -193,6 +199,6 @@ const TestEditView = () => {
       <Button onClick={onSave}>Сохранить</Button>
     </div>
   )
-}
+})
 
 export default TestEditView;

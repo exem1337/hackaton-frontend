@@ -52,7 +52,7 @@ const LeftMenu = observer(() => {
             Мои результаты
           </Link>
           { !userStore.isOperatingRole() &&
-            <Link to={"/conversions"} className={"nav-link d-flex align-items-center"}>
+            <Link to={"/my_applications"} className={"nav-link d-flex align-items-center"}>
               <span className={"d-flex align-items-center"}>
                 <PiNotepadBold className={"me-2"} />
               </span>
