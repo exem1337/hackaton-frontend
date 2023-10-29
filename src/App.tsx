@@ -22,6 +22,8 @@ import TestEditView from './views/TestsEditView';
 import DbEmployeePage from "./views/db-employee-page/DbEmployeePage";
 import TestBaseView from './views/TestBaseView';
 import MateralsBaseView from './views/MaterialsBaseView';
+import PageNotFound from './views/PageNotFound';
+import MyApplications from './views/my-applications-page/MyApplications';
 
 const App = () => {
    useEffect(() => {
