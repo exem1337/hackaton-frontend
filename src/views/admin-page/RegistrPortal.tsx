@@ -53,7 +53,7 @@ const RegistrPortal = () => {
             </FloatingLabel>
          </Modal.Body>
          <Modal.Footer>
-            <Button onClick={() => onHandel()}>Созранить</Button>
+            <Button onClick={() => onHandel()}>Сохранить</Button>
          </Modal.Footer>
       </div>
    );
