@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import AuthView from './views/AuthView';
@@ -37,22 +37,27 @@ const App = () => {
       { path: '/portal', element: <PortalView /> },
       { path: '/department/:id', element: <DepartmentView /> },
       { path: '/conversions', element: <Conversions /> },
-      { path: '/admin', element: <AdminPage/> },
+      { path: '/admin', element: <AdminPage /> },
       { path: '/signup', element: <SignupView /> },
-      {path: '/employee', element: <DbEmployeePage/>},
+      { path: '/employee', element: <DbEmployeePage /> },
    ])
-  return routes;
+   return routes;
 }
 
 const AppWrapper = () => {
    return (
       <Router>
-         <Header/>
-         <div className="app-wrapper">
-            <LeftMenu/>
-            <App/>
+         <div className='d-flex flex-column min-vh-100'>
+         <Header />
+            <div className='flex-grow-1'>
+               
+               <div className="app-wrapper ">
+                  <LeftMenu />
+                  <App />
+               </div>
+            </div>
+            <Footer />
          </div>
-         {/* <Footer /> */}
       </Router>
    )
 }
