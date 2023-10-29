@@ -9,5 +9,24 @@ export interface ITestPageItem {
 
 export interface ITest {
   id: number;
-  title: string;
+  text: string;
+}
+
+export interface ITestEdit {
+  name: string;
+  questions: Array<ITestEditQuestion>
+}
+
+export interface ITestEditQuestion {
+  text: string;
+  id: number;
+  blob_id?: string;
+  answers: Array<ItestEditQuestionAnswer>;
+}
+
+export interface ItestEditQuestionAnswer {
+  id: number;
+  text: string;
+  score: number;
+  isCorrect: boolean;
 }

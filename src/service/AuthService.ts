@@ -6,14 +6,12 @@ import Cookies from 'js-cookie'
 import { FileService } from "./File.service";
 
 export default class AuthService {
-   static async login(email: string, password: string): Promise<void> {
+   static async login(email: string, password: string): Promise<boolean> {
       try {
-         console.log(email, password, "1")
          const userCredentials = (await $api.post<AuthResponse>('/auth/login', { username: email, password })).data as AuthResponse;
-         console.log("2")
          userStore.setUser(await this.getUserInfoById(userCredentials.id));
-         console.log(userCredentials, "3")
-         this.setTokenCookie(userCredentials)
+         this.setTokenCookie(userCredentials);
+         return true;
       }
       catch (error) {
          console.error(error);

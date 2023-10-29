@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react'
-import { TestService } from '../service/test.service'
 import BaseWrapper, { BaseWrapperSlot } from '../components/BaseWrapper';
 
 const TestCompleteView = () => {
-  const testService = new TestService();
 
   return (
     <div className="app-container test-complete">
-      <BaseWrapper title={testService.title}>
+      <BaseWrapper title={''}>
         <BaseWrapperSlot>
           Контент
         </BaseWrapperSlot>
