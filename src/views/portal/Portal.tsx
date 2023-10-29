@@ -16,18 +16,7 @@ const Portal = ({ key, id, title, nameHR, name }) => {
     <div key={key} className={"w-100 mb-4 border-1 portal--container"}>
       <BaseWrapper title={title} smallTitle={true}>
         <BaseWrapperSlot>
-          <div className="department-view--themes__theme--actions">
-            <ActionButton text="Редактировать" handler={() => onEditPortal(id)}>
-              <ActionButtonSlot>
-                <MdModeEdit />
-              </ActionButtonSlot>
-            </ActionButton>
-            <ActionButton text="Удалить" handler={() => onDeletePortal(id)}>
-              <ActionButtonSlot>
-                <AiFillDelete />
-              </ActionButtonSlot>
-            </ActionButton>
-          </div>
+
           <ListGroup as="ol">
             <ListGroup.Item
               as="li"
@@ -48,7 +37,7 @@ const Portal = ({ key, id, title, nameHR, name }) => {
                 <ActionButton
                   text="Перейти к порталу"
                   handler={() => {
-                    <Navigate to={"./"} />;
+                    <Navigate to={`/portal/${id}`} />;
                   }}
                 >
                   <ActionButtonSlot>
