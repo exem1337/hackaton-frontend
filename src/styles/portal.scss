@@ -39,7 +39,15 @@
 .portal {
   margin-top: 60px !important;
   margin-bottom: 60px !important;
-
+  > .base-wrapper {
+    position: relative;
+    >h1{
+      margin-bottom: 0;
+    }
+    .department-view--themes__theme--actions {
+      margin-top: 14px;
+    }
+  }
   &--departments {
     margin-top: 24px;
 
@@ -50,6 +58,23 @@
       border-radius: 8px;
       width: 100%;
       cursor: pointer;
+    }
+  }
+  &__divisions{
+    margin-top: 0;
+    .base-wrapper {
+      >h1{
+        margin-bottom: 8px;
+      }
+      position: relative;
+      .department-view--themes__theme--actions {
+        margin-top: 0;
+      }
+      .list-group .list-group-item.active {
+        background-color: $card-bg-color;
+        border-color: $bg-darken;
+        color: black;
+      }
     }
   }
 }
