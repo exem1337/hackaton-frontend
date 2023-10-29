@@ -22,6 +22,15 @@ const Header = observer(() => {
     navigate('/profile')
   }
 
+  const onGoToMain = () => {
+    if (userStore.isAdmin()) {
+      navigate('/admin');
+      return;
+    }
+
+    navigate('/portal');
+  }
+
   return(
 		<>
       <Navbar data-bs-theme="dark" className={'position-sticky top-0 z-2'}>
@@ -33,20 +42,20 @@ const Header = observer(() => {
               height="30"
               className="d-inline-block align-top"
             />{' '}
-          <Navbar.Brand href="#home"><h2>ПрофТестиум</h2></Navbar.Brand>
+          <Navbar.Brand onClick={() => navigate('/')}><h2>ПрофТестиум</h2></Navbar.Brand>
           {
             ['', '/'].includes(pathname) &&
             <Nav className="me-auto">
-              <Nav.Link href="#opportunity">Возможности</Nav.Link>
-              <Nav.Link href="#features">Тарифы</Nav.Link>
-              <Nav.Link href="#pricing">Внедрение</Nav.Link>
-              <Nav.Link href="#feedback">Отзывы</Nav.Link>
+              <Nav.Link>Возможности</Nav.Link>
+              <Nav.Link>Тарифы</Nav.Link>
+              <Nav.Link>Внедрение</Nav.Link>
+              <Nav.Link>Отзывы</Nav.Link>
             </Nav>
           }
           {
             userStore.isLogin &&
             <Nav className="me-auto">
-              <Nav.Link href="/portal">Перейти к порталу</Nav.Link>
+              <Nav.Item onClick={() => onGoToMain()}>{ userStore.isAdmin() ? 'Панель администратора' : 'Перейти к порталу' }</Nav.Item>
             </Nav>
           }
 

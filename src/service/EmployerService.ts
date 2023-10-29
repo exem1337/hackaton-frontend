@@ -9,7 +9,6 @@ export default class EmployerService {
          userCredentials = await Promise.all(userCredentials.map(async (value) => ({
             ...value, avatar: value.avatar_salt ? await FileService.getFileBase64(value.avatar_salt) : ''
          })));
-         // if(userCredentials.avatar === null) FileService.getFile()
          return userCredentials
       } catch (error) {
          console.log(error)

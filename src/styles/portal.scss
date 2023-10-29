@@ -39,6 +39,7 @@
 .portal {
   margin-top: 60px !important;
   margin-bottom: 60px !important;
+
   > .base-wrapper {
     position: relative;
     >h1{
@@ -59,6 +60,15 @@
       width: 100%;
       cursor: pointer;
     }
+  }
+
+  &-edit {
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
   &__divisions{
     margin-top: 0;

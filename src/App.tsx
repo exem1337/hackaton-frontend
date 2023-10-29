@@ -20,8 +20,10 @@ import AuthService from './service/AuthService';
 import SignupView from './views/SignupView';
 import TestEditView from './views/TestsEditView';
 import DbEmployeePage from "./views/db-employee-page/DbEmployeePage";
-import MyApplications from "./views/my-applications-page/MyApplications";
-import PageNotFound from "./views/PageNotFound";
+import TestBaseView from './views/TestBaseView';
+import MateralsBaseView from './views/MaterialsBaseView';
+import PageNotFound from './views/PageNotFound';
+import MyApplications from './views/my-applications-page/MyApplications';
 import MyResult from "./views/MyResult";
 
 const App = () => {
@@ -38,6 +40,7 @@ const App = () => {
       { path: '/tests/:id', element: <TestCompleteView /> },
       { path: '/topics/:id/test-create', element: <TestEditView /> },
       { path: '/portal', element: <PortalView /> },
+      { path: '/portal/:id', element: <PortalView /> },
       { path: '/department/:id', element: <DepartmentView /> },
       { path: '/conversions', element: <Conversions /> },
       { path: '/admin', element: <AdminPage /> },
@@ -47,6 +50,8 @@ const App = () => {
       {path: '/my_applications', element: <MyApplications/>},
       {path: '/my_result', element: <MyResult/>},
       {path: '/*', element: <PageNotFound/>},
+      { path: '/testbase', element: <TestBaseView /> },
+      { path: '/materials', element: <MateralsBaseView /> },
    ])
    return routes;
 }

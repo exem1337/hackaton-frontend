@@ -67,13 +67,13 @@ const LeftMenu = observer(() => {
               </span>
               Мои заявки{" "}
             </Link> 
-            <Link to={""} className={"nav-link d-flex align-items-baseline"}>
+            <Link to={"/materials"} className={"nav-link d-flex align-items-baseline"}>
               <span className={"d-flex align-items-center"}>
                 <BsDatabase className={"me-2"} />
               </span>
               База учебных материалов
             </Link>
-            <Link to={""} className={"nav-link d-flex align-items-center"}>
+            <Link to={"/testbase"} className={"nav-link d-flex align-items-center"}>
               <span className={"d-flex align-items-center"}>
                 <BsDatabase className={"me-2"} />
               </span>
