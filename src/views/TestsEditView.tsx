@@ -1,11 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ITestEdit } from "../model/test.model"
 import { Button, Form } from "react-bootstrap"
 import ActionButton, { ActionButtonSlot } from "../components/ActionButton"
 import { AiFillDelete } from "react-icons/ai";
 import api from '../http'
 import BaseWrapper, { BaseWrapperSlot } from "../components/BaseWrapper";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const TestEditView = () => {
   const params = useParams();
@@ -111,6 +111,28 @@ const TestEditView = () => {
       topic_id: Number(params.id),
     })
   }
+
+
+
+  const getTestQuestions = async () => {
+    try {
+      const testResponse = (await api.get(`/tests/test/one/${params.id}`))?.data;
+      testResponse.questions = testResponse.answer;
+      setTest(testResponse);
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+  
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if(pathname.includes('/edit'))
+      getTestQuestions();
+  }, [])
+
+
 
   return (
     <div className="app-container test-edit">
