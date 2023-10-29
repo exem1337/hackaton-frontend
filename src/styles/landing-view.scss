@@ -1,0 +1,78 @@
+.background--img{
+    max-width: 100%;
+    height: auto;
+}
+
+.tariffs{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.integration{
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.card{
+  display: block;
+  margin: 1em;
+  height: 20rem;
+  width: 18rem;
+}
+
+.cardst{
+    display: inline-block;
+    margin: 1em;
+    height: 20rem;
+    width: 18rem;
+    position: relative;
+    
+  }
+
+.card-body{
+    position: relative;
+    height: 20rem;
+    width: 18rem;
+    background-color: #ffe2ac;
+}
+
+.card--btn
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.introduction{
+    height: 17rem;
+    width:50%;
+    border-radius: 10px;
+    position: relative;
+    padding: 1em;
+    box-shadow: -7px -7px 5px -5px rgba(34, 60, 80, 0.6) inset;
+}   
+
+.group1{
+    background-color: #F06431;
+}
+
+.group2{
+    background-color: #60C0C0 ;
+} 
+
+.image--cardst{
+    position: relative;
+    right: -1rem;
+    width: 8em;
+    height: 8em;
+}
+
+.introduction h3{
+    text-align: center;
+    color:white;
+}
+
+.introduction p{
+    color:white;
+}
