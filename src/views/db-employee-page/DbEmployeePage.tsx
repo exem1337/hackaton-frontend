@@ -22,7 +22,7 @@ const DbEmployeePage = () => {
    const [users, setUsers] = useState<IUsers[]>([])
    async function getUsers() {
       const result = await EmployerService.getAllUSer();
-      console.log(result[0].position)
+      console.log(result[0]?.position)
       setUsers(result);
    }
    useEffect(()=>{
@@ -53,9 +53,16 @@ const DbEmployeePage = () => {
    }
 
    function deleteSubmit(){
-      // EmployerService.pathUser(
-      //    {...users[users.findIndex((value)=>value.id === activeUser.id)], ['status']: 'Уволен'}
-      // )
+      EmployerService.pathUser(
+         {...users[users.findIndex((value)=>value.id === activeUser.id)], ['status']: 'Уволен'}
+      )
+   }
+
+   async function onHandelSaveUsersEdit(user) {
+      console.log(user)
+      await EmployerService.pathUser(user);
+      // await getUsers();
+      // activeUserRestart();
    }
 
    return (
@@ -116,7 +123,7 @@ const DbEmployeePage = () => {
                <ModalWindow show={activeUser?.id !== null} onHide={() => activeUserRestart()}>
                   {
                      activeUser?.editStatus ?
-                        <ModalDbEmployees activeUserRestart={activeUserRestart} id={activeUser?.id}/>
+                        <ModalDbEmployees onHandelSaveUsersEdit={onHandelSaveUsersEdit} activeUserRestart={activeUserRestart} id={activeUser?.id}/>
                         :
                         <ConfirmModal header={'Увольнение сотрудника'} onHide={activeUserRestart} onHandel={deleteSubmit}>
                            <p>

@@ -1,4 +1,5 @@
 import { EUserRole } from "../enums/userRole.enum";
+import {IPosition} from "./IDirectory";
 
 export interface IUser{
    email: string;
@@ -43,10 +44,6 @@ export interface IUserInfoRolesResponse {
 export interface IUserTokenResponse {
    token: string;
    refresh: string;
-}
-
-export interface IPosition{
-   name: string,
 }
 
 export interface IUsers{

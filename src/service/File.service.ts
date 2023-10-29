@@ -45,22 +45,27 @@ export class FileService {
   }
 
   static async uploadFile(file: Array<File>): Promise<string> {
-    const formData = new FormData();
-    const fileToUpload = file[0];
-    formData.append('content', fileToUpload);
+    try {
+      const formData = new FormData();
+      const fileToUpload = file[0];
+      formData.append('content', fileToUpload);
 
-    const salt = await api.post(
-      '/cdn/upload',
-      formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        baseURL: 'http://animefeet.servebeer.com:5000',
-      }
-    ).then((res) => res.data.salt)
+      const salt = await api.post(
+         '/cdn/upload',
+         formData,
+         {
+           headers: {
+             'Content-Type': 'multipart/form-data',
+           },
+           baseURL: 'http://animefeet.servebeer.com:5000',
+         }
+      ).then((res) => res.data.salt)
 
-    return salt;
+      return salt;
+    } catch (error) {
+      throw error
+    }
+
   }
 
   static async getBlobByBlobId(blobId: number): Promise<Blob> {
@@ -90,4 +95,6 @@ export class FileService {
   
     document.body?.removeChild(link);
   }
+
+
 }
