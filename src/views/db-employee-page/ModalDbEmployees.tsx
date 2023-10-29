@@ -4,10 +4,13 @@ import {IUsers} from "../../model/IUser";
 import {USERS_STATUS_NAME_MAP} from "../../constants/usersStatusNameMap.const";
 import {StatusEmployeeEnum} from "../../enums/statusEmployee.enum";
 import EmployerService from "../../service/EmployerService";
+import {FileService} from "../../service/File.service";
+import {IPosition} from "../../model/IDirectory";
 
 interface UserActive {
    id: number,
    activeUserRestart: () => void
+   onHandelSaveUsersEdit: (users: IUsers)=>void
 }
 
 
@@ -15,7 +18,7 @@ interface UserActive {
 const ModalDbEmployees = (props: UserActive) => {
 
    const [user, setUser] = useState<IUsers>(null)
-
+   const [allPosition, setAllPosition] = useState<IPosition>(null)
    async function getOneUser(){
       const result = await EmployerService.getOneUSer(props.id)
       setUser(result);
@@ -24,13 +27,18 @@ const ModalDbEmployees = (props: UserActive) => {
    useEffect(()=>{
       getOneUser()
    }, [])
-   useEffect(()=>{
-      console.log(user)
-   }, [user])
-   function onHandel() {
-      EmployerService.pathUser(user)
+
+
+
+
+   function onEditFile(e) {
+      const file = [(e.target as HTMLInputElement).files[0]]
+      console.log(file)
+      const salt = FileService.uploadFile(file)
+      console.log(salt)
    }
-      // Изменить профиль
+
+   // Изменить профиль
       return (
          <div>
             <Modal.Header closeButton>
@@ -54,25 +62,38 @@ const ModalDbEmployees = (props: UserActive) => {
                <FloatingLabel controlId="floatingPassword" label="Email">
                   <Form.Control value={user?.email} type="text" placeholder="Введите email" onChange={(e)=>setUser({...user, ['email']: e.target.value})}/>
                </FloatingLabel>
-               <FloatingLabel controlId="floatingSelect" label="Статус сотрудника">
-                  <Form.Select defaultValue={user?.status} aria-label="Floating label select example" onChange={(e)=>setUser({...user, ['status']: e.target.value})}>
+               {user?.status&&<FloatingLabel controlId="floatingSelect" label="Статус сотрудника">
+                  <Form.Select defaultValue={user?.status} aria-label="Floating label select example"
+                               onChange={(e) => setUser({...user, ['status']: e.target.value})}>
                      <option value="Отпуск">Отпуск</option>
                      <option value="Активен">Активен</option>
                      <option value="Командировка">Командировка</option>
                      <option value="Уволен">Уволен</option>
                   </Form.Select>
-               </FloatingLabel>
+               </FloatingLabel>}
                <FloatingLabel controlId="floatingPassword" label="Должность">
                   <Form.Control value={user?.position?.name} type="text" placeholder="Введите должность" onChange={(e)=>setUser({...user, ['position']: {
                         name: e.target.value
                      }})}/>
                </FloatingLabel>
+               {/*{user?.position?.name && <FloatingLabel controlId="floatingSelect" label="Статус сотрудника">*/}
+               {/*    <Form.Select defaultValue={user?.status} aria-label="Floating label select example"*/}
+               {/*                 onChange={(e) => setUser({...user, ['status']: e.target.value})}>*/}
+               {/*       /!*{user?.position.}*!/*/}
+               {/*    </Form.Select>*/}
+               {/*</FloatingLabel>}*/}
+
+
                <FloatingLabel controlId="floatingPassword" label="Ставка">
                   <Form.Control value={user?.rate} type="text" placeholder="Введите ставку" onChange={(e)=>setUser({...user, ['rate']: e.target.value})}/>
                </FloatingLabel>
+               <Form.Group controlId="formFile" className="mb-3">
+                  <Form.Label>Изменение аватара пользователя</Form.Label>
+                  <Form.Control type="file" onChange={(e)=> onEditFile(e)} />
+               </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-               <Button onClick={() => onHandel()}>Сохранить</Button>
+               <Button onClick={() => props.onHandelSaveUsersEdit(user)}>Сохранить</Button>
             </Modal.Footer>
          </div>
       );
