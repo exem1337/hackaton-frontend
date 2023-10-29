@@ -39,15 +39,16 @@
 .portal {
   margin-top: 60px !important;
   margin-bottom: 60px !important;
-  position: relative;
 
-  .action-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: 14px;
+  > .base-wrapper {
+    position: relative;
+    >h1{
+      margin-bottom: 0;
+    }
+    .department-view--themes__theme--actions {
+      margin-top: 14px;
+    }
   }
-
   &--departments {
     margin-top: 24px;
 
@@ -68,5 +69,22 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+  &__divisions{
+    margin-top: 0;
+    .base-wrapper {
+      >h1{
+        margin-bottom: 8px;
+      }
+      position: relative;
+      .department-view--themes__theme--actions {
+        margin-top: 0;
+      }
+      .list-group .list-group-item.active {
+        background-color: $card-bg-color;
+        border-color: $bg-darken;
+        color: black;
+      }
+    }
   }
 }
