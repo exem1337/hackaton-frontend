@@ -60,7 +60,7 @@ const LeftMenu = observer(() => {
             </Link>
           }
 
-          {  (userStore.isAdmin || userStore.isPortalAdmin || userStore.isHrManager) && <>
+          { userStore.isOperatingRole() && <>
             <Link to={"/my_applications"} className={"nav-link d-flex align-items-center"}>
               <span className={"d-flex align-items-center"}>
                 <PiNotepadBold className={"me-2"} />
@@ -91,17 +91,15 @@ const LeftMenu = observer(() => {
               </span>
               Аналитика по компании
             </Link>
+            { userStore.isAdmin() && 
+              <Link to={"/admin"} className={"nav-link d-flex align-items-center"}>
+                <AiFillSetting className={"me-2"} />
+                Настройки
+              </Link>
+            }
           </> 
         }
         </Nav>
-        { userStore.isAdmin && 
-          <Nav className={"mt-auto"}>
-            <Link to={"/admin"} className={"nav-link d-flex align-items-center"}>
-              <AiFillSetting className={"me-2"} />
-              Настройки
-            </Link>
-          </Nav>
-        }
       </Container>
     </Nav>
   );

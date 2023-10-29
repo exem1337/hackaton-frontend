@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import Portal from "../portal/Portal";
 import BaseWrapper, { BaseWrapperSlot } from "../../components/BaseWrapper";
 import ActionButton, { ActionButtonSlot } from "../../components/ActionButton";
-import { MdModeEdit } from "react-icons/md";
 import { IoAdd } from "react-icons/io5";
-import { Button, FloatingLabel, Modal, Form } from "react-bootstrap";
-import MyModalConversion from "../page-left-menu/conversions-page/MyModalConversion";
 import ModalWindow from "../../myModal/ModalWindow";
 import RegistrPortal from "./RegistrPortal";
-import UsersCreate from "../../components/UsersCreate";
 
 const AdminPage = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -32,15 +28,9 @@ const AdminPage = () => {
       name: "Основы РЖД",
     },
   ]);
-
-  function onAddPortal(theme: any) {}
-
-  function savePortal() {}
-
+  
   return (
     <div className={"app-container admin-page--container"}>
-      <UsersCreate />
-
       <BaseWrapper title="Порталы">
         <BaseWrapperSlot>
           <div
