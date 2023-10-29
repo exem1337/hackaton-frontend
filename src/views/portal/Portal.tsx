@@ -3,11 +3,13 @@ import BaseWrapper, { BaseWrapperSlot } from "../../components/BaseWrapper";
 import { ListGroup } from "react-bootstrap";
 import ActionButton, { ActionButtonSlot } from "../../components/ActionButton";
 import { IoAdd } from "react-icons/io5";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { AiFillDelete, AiOutlineArrowRight } from "react-icons/ai";
 import { MdModeEdit } from "react-icons/md";
 
 const Portal = ({ key, id, title, nameHR, name }) => {
+  const navigate = useNavigate();
+
   function onEditPortal(id) {}
 
   function onDeletePortal(id) {}
@@ -36,9 +38,9 @@ const Portal = ({ key, id, title, nameHR, name }) => {
               <div className={"my-auto"}>
                 <ActionButton
                   text="Перейти к порталу"
-                  handler={() => {
-                    <Navigate to={`/portal/${id}`} />;
-                  }}
+                  handler={() => 
+                    navigate(`/portal/${id}`)
+                  }
                 >
                   <ActionButtonSlot>
                     <AiOutlineArrowRight />

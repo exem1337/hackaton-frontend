@@ -39,6 +39,14 @@
 .portal {
   margin-top: 60px !important;
   margin-bottom: 60px !important;
+  position: relative;
+
+  .action-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 14px;
+  }
 
   &--departments {
     margin-top: 24px;
@@ -51,5 +59,14 @@
       width: 100%;
       cursor: pointer;
     }
+  }
+
+  &-edit {
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 }

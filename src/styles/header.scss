@@ -9,6 +9,9 @@
   top: 0;
   z-index: 2;
   
+  .navbar-brand {
+    color: $text-black;
+  }
 
   a {
     color: $text-black;
