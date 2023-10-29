@@ -39,6 +39,7 @@ const App = () => {
       { path: '/tests/:id', element: <TestCompleteView /> },
       { path: '/topics/:id/test-create', element: <TestEditView /> },
       { path: '/portal', element: <PortalView /> },
+      { path: '/portal/:id', element: <PortalView /> },
       { path: '/department/:id', element: <DepartmentView /> },
       { path: '/conversions', element: <Conversions /> },
       { path: '/admin', element: <AdminPage /> },
