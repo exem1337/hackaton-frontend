@@ -54,7 +54,7 @@ const PortalView = observer(() => {
             </ActionButton>
           }
 
-          {userStore.isAdmin() || userStore.isPortalAdmin() && (
+          {(userStore.isAdmin() || userStore.isPortalAdmin()) && (
             <div className="portal-edit">
               <Form.Label htmlFor="name">Название портала</Form.Label>
               <Form.Control type="text" id="name" value={portal?.name} />
