@@ -4,8 +4,16 @@ import BaseButton from "../components/ui-kit/BaseButton/BaseButton"
 import BaseInput from "../components/ui-kit/BaseInput/BaseInput";
 import BaseSelect from "../components/ui-kit/BaseSelect/BaseSelect";
 import { Validators } from "../components/ui-kit/validators/validators.util";
+import { useState } from "react";
+import { Spinner } from "react-bootstrap";
+import "../components/ui-kit/ui-kit.scss"
+import BaseModal from "../components/ui-kit/BaseModal/BaseModal";
+import OneFieldModal from "../components/ui-kit/BaseModal/ExampleModals/OneFieldModal";
 
 const UiKit = () => {
+  const [isLoadingButton, setIsLoadingButton] = useState(false);
+  const [isShowModal, setIsShowModal] = useState(false);
+
   return (
     <div className="app-container ui-kit">
       <h4>Кнопка</h4>
@@ -18,9 +26,16 @@ const UiKit = () => {
       />
 
       <h4>Кнопка со слотом</h4>
-      <BaseButton text="Текст кнопки"><MdModeEdit /></BaseButton>
+      <BaseButton text="Текст кнопки">
+        <MdModeEdit />
+      </BaseButton>
 
       <h4>Кнопка с лоудером</h4>
+      <BaseButton 
+        text="Нажми на меня" 
+        loading={isLoadingButton} 
+        onClick={() => setIsLoadingButton(true)} 
+      />
       
       <h4>Экшн кнопка</h4>
       <BaseActionButton text="Текст кнопки">
@@ -103,6 +118,26 @@ const UiKit = () => {
       />
       
       <h4>Лоудер</h4>
+      <Spinner 
+        animation="border" 
+        variant="primary"
+      />
+
+      <h4>Лоудер маленький</h4>
+      <Spinner 
+        animation="border" 
+        size="sm"
+        variant="primary"
+      />
+
+      <h4>Модалка</h4>
+      <BaseButton 
+        text="Показать модалку" 
+        onClick={() => setIsShowModal(true)}
+      />
+      <BaseModal show={isShowModal}>
+        <OneFieldModal onHide={() => setIsShowModal(false)} />
+      </BaseModal>
     </div>
   )
 }

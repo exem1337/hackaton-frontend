@@ -34,6 +34,7 @@ export interface IBaseButtonProps {
   onClick?: (...args: any) => any | Promise<any>;
   disabled?: boolean;
   children?: any;
+  loading?: boolean;
 }
 
 export interface IBaseSelectProps extends IBaseInputProps {
@@ -43,4 +44,10 @@ export interface IBaseSelectProps extends IBaseInputProps {
 export interface IBaseSelectOption {
   label: string;
   value: string | number | readonly string[];
+}
+
+export interface IBaseModalProps {
+  onHide?: (...args: Array<unknown>) => unknown | Promise<unknown>;
+  children?: any;
+  show?: boolean;
 }
