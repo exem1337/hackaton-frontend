@@ -1,0 +1,30 @@
+@import "../ui-kit.scss";
+
+.base-button {
+  color: $button-text-color;
+  background-color: $base-color;
+  transition: $transition-speed;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+
+  &:active {
+    background-color: $hover-color;
+  }
+
+  &:focus {
+    background-color: $hover-color;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    background-color: $disabled-color;
+  }
+
+  > svg {
+    margin-left: 4px;
+  }
+}

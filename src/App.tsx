@@ -24,6 +24,7 @@ import MateralsBaseView from './views/MaterialsBaseView';
 import PageNotFound from './views/PageNotFound';
 import MyApplications from './views/my-applications-page/MyApplications';
 import MyResult from "./views/MyResult";
+import UiKit from './views/ui-kit';
 
 const App = () => {
    useEffect(() => {
@@ -50,6 +51,7 @@ const App = () => {
       {path: '/*', element: <PageNotFound/>},
       { path: '/testbase', element: <TestBaseView /> },
       { path: '/materials', element: <MateralsBaseView /> },
+      { path: '/ui-kit', element: <UiKit /> },
    ])
    return routes;
 }
