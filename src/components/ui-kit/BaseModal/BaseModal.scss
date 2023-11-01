@@ -1,0 +1,20 @@
+@import "../ui-kit.scss";
+
+.modal-title {
+  color: $text-black;
+  padding-left: 16px;
+  padding-top: 16px;
+  margin-bottom: 16px;
+  position: relative;
+
+  &--close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+  }
+}
+
+.modal-footer {
+  margin-top: 16px;
+}
