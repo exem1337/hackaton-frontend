@@ -9,10 +9,23 @@ import { Spinner } from "react-bootstrap";
 import "../components/ui-kit/ui-kit.scss"
 import BaseModal from "../components/ui-kit/BaseModal/BaseModal";
 import OneFieldModal from "../components/ui-kit/BaseModal/ExampleModals/OneFieldModal";
+import { useValidationForm } from "../components/ui-kit/utils/useValidationForm";
 
 const UiKit = () => {
   const [isLoadingButton, setIsLoadingButton] = useState(false);
   const [isShowModal, setIsShowModal] = useState(false);
+
+  interface IExmapleForm {
+    name: string;
+    email: string;
+    password: string;
+  }
+
+  const [isValid, form, setValue] = useValidationForm<IExmapleForm>({
+    name: '',
+    email: '',
+    password: '',
+  })
 
   return (
     <div className="app-container ui-kit">
@@ -138,6 +151,34 @@ const UiKit = () => {
       <BaseModal show={isShowModal}>
         <OneFieldModal onHide={() => setIsShowModal(false)} />
       </BaseModal>
+
+      <h4>Форма с полной валидацией</h4>
+      <div className="ui-kit-form">
+        <BaseInput 
+          validation={Validators.required()}
+          label="Фио" 
+          value={form.name}
+          onChange={(event) => setValue('name', event)}
+        />
+        <BaseInput 
+          validation={Validators.required()}
+          label="Email" 
+          value={form.email}
+          onChange={(event) => setValue('email', event)}
+        />
+        <BaseInput 
+          validation={Validators.required()}
+          label="Password" 
+          value={form.password}
+          onChange={(event) => setValue('password', event)}
+        />
+        <BaseButton 
+          text="Продолжить" 
+          disabled={!isValid} 
+        />
+
+        <pre>{ JSON.stringify(form) } { isValid } </pre>
+      </div>
     </div>
   )
 }

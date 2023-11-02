@@ -9,7 +9,7 @@
   }
 
   .invalid-feedback {
-    display: block;
+    display: block !important;
   }
 
   &:has(.invalid-feedback) input {

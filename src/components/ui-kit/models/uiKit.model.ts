@@ -1,6 +1,7 @@
 import { VALIDATION_OUTPUT } from "../validators/constants/validatorFnType.const";
 
 export type TValidationType = Array<VALIDATION_OUTPUT> | VALIDATION_OUTPUT;
+export type TValidationForm<T> = [boolean, T, (key: string, value: unknown) => void];
 
 export interface IBaseInputValue {
   value: string;

@@ -10,7 +10,7 @@ export class Validators {
   }
 
   public static required(message = EValidationTexts.Required): VALIDATION_OUTPUT {
-    return (value?: string) => !value?.length ? message : '';
+    return (value?: string) => (value != null && Boolean(String(value).trim())) ? '' : message;
   }
 
   public static minLength(min: number, message = EValidationTexts.MinLength): VALIDATION_OUTPUT {
